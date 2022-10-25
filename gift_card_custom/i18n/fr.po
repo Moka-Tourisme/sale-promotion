@@ -1,0 +1,121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* gift_card_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20220915\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-06 09:16+0000\n"
+"PO-Revision-Date: 2022-10-06 09:16+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: gift_card_custom
+#: model_terms:ir.ui.view,arch_db:gift_card_custom.report_gift_card_document
+msgid "<b class=\"warning_barcode\">This code is not a ticket</b>"
+msgstr "<b class=\"warning_barcode\">Ce code n'est pas un billet</b>"
+
+#. module: gift_card_custom
+#: model:ir.model.fields,help:gift_card_custom.field_product_product__detailed_type
+#: model:ir.model.fields,help:gift_card_custom.field_product_template__detailed_type
+msgid ""
+"A storable product is a product for which you manage stock. The Inventory app has to be installed.\n"
+"A consumable product is a product for which stock is not managed.\n"
+"A service is a non-material product you provide."
+msgstr ""
+"Un produit stockable est un produit dont on gère le stock. L'application \"Inventaire\" doit être installée. \n"
+"Un produit consommable, d'un autre côté, est un produit pour lequel le stock n'est pas géré.\n"
+"Un service est un produit immatériel que vous fournissez."
+
+#. module: gift_card_custom
+#: model_terms:ir.ui.view,arch_db:gift_card_custom.report_gift_card_document
+msgid "Amount"
+msgstr "Montant"
+
+#. module: gift_card_custom
+#: model_terms:ir.ui.view,arch_db:gift_card_custom.report_gift_card_document
+msgid "Code to be used when ordering online or at the counter before"
+msgstr ""
+"Code à utiliser pour une commande en ligne\n"
+"ou en guichet avant le"
+
+#. module: gift_card_custom
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_product__condition_card
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_template__condition_card
+msgid "Condition"
+msgstr ""
+
+#. module: gift_card_custom
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_product__custom_header
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_template__custom_header
+msgid "Custom Header"
+msgstr "Header Personnalisé"
+
+#. module: gift_card_custom
+#: code:addons/gift_card_custom/models/product.py:0
+#, python-format
+msgid "Deleting the Gift Card Pay product is not allowed."
+msgstr ""
+
+#. module: gift_card_custom
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_product__description_card
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_template__description_card
+msgid "Description"
+msgstr ""
+
+#. module: gift_card_custom
+#: model:ir.model,name:gift_card_custom.model_gift_card
+#: model:ir.model.fields.selection,name:gift_card_custom.selection__product_template__detailed_type__gift
+#: model:ir.model.fields.selection,name:gift_card_custom.selection__product_template__type__gift
+#: model_terms:ir.ui.view,arch_db:gift_card_custom.page_gift_card_template
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+#. module: gift_card_custom
+#: model:ir.actions.report,name:gift_card_custom.gift_card_custom_report
+msgid "Gift Card Custom Report"
+msgstr "Rapport Carte Cadeau Personnalisée"
+
+#. module: gift_card_custom
+#: model_terms:ir.ui.view,arch_db:gift_card_custom.page_gift_card_template
+msgid "Gift Card Infos"
+msgstr "Informations Carte Cadeau"
+
+#. module: gift_card_custom
+#: model:ir.model.fields,field_description:gift_card_custom.field_gift_card__product_id
+msgid "Product"
+msgstr "Produit"
+
+#. module: gift_card_custom
+#: model:ir.model,name:gift_card_custom.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: gift_card_custom
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_product__detailed_type
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_template__detailed_type
+msgid "Product Type"
+msgstr "Type d'article"
+
+#. module: gift_card_custom
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_product__show_balance
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_template__show_balance
+msgid "Show Balance"
+msgstr "Voir le montant"
+
+#. module: gift_card_custom
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_product__title
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_template__title
+msgid "Title"
+msgstr "Titre"
+
+#. module: gift_card_custom
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_product__type
+#: model:ir.model.fields,field_description:gift_card_custom.field_product_template__type
+msgid "Type"
+msgstr ""

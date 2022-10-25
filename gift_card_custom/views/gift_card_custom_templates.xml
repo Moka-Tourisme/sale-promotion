@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="page_gift_card_template" model="ir.ui.view">
+        <field name="name">product.page_gift_card</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Gift Card" name="gift_card" attrs="{'invisible':[('type', '!=', 'gift')]}">
+                    <group name="gift_card" string="Gift Card Infos">
+                        <group>
+                            <field name="custom_header" widget='image'/>
+                        </group>
+                        <group>
+                            <field name="title" widget=''/>
+                            <label for="show_balance"/>
+                            <div class="o_row" name="Show Balance">
+                                <field name="show_balance" widget="boolean"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group>
+                        <label for="description_card"/>
+                        <div class="o_row" name="description_card">
+                            <field name="description_card" widget='html' options="{'codeview':true}"/>
+                        </div>
+                        <label for="condition_card"/>
+                        <div class="o_row" name="condition_card">
+                            <field name="condition_card" widget='html' options="{'codeview':true}"/>
+                        </div>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="page_gift_card_view_form" model="ir.ui.view">
+        <field name="name">page.gift.card.form Website</field>
+        <field name="model">gift.card</field>
+        <field name="inherit_id" ref="gift_card.gift_card_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='gift_card']" position="inside">
+                <field name="product_id" domain="[('type','=', 'gift')]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
