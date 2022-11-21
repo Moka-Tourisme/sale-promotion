@@ -1,6 +1,6 @@
 from odoo.addons.sale_gift_card.tests.common import TestSaleGiftCardCommon
 
-class GiftCardCustomTest(TestSaleGiftCardCommon):
+class GiftCardDesignTest(TestSaleGiftCardCommon):
 
     def test_buying_simple_gift_card(self):
         order = self.empty_order

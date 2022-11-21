@@ -6,7 +6,7 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
-class GiftCardCustom(models.Model):
+class GiftCardDesign(models.Model):
     _inherit = "gift.card"
 
     product_template_id = fields.Many2one('product.template', string="Product", required=True)

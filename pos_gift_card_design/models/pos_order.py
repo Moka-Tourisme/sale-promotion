@@ -14,8 +14,9 @@ class PosOrder(models.Model):
         for order in self.sudo().browse([o["id"] for o in order_ids]):
             gift_card_config = order.config_id.gift_card_settings
             for line in order.lines:
-                #
+                # Change condition and check if the object is a gift card to create gift card and not only when the object is the configured gift card
                 if line.product_id.detailed_type == "gift":
+                # End of condition
                     if not line.gift_card_id:
                         if gift_card_config == "create_set":
                             new_card = line._create_gift_cards()

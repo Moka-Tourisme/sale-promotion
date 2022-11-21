@@ -5,7 +5,7 @@
     'category': 'Custom',
     'summary': 'Sale Gift card custom',
     'description': "Sale Gift card custom",
-    'depends': ['gift_card_custom', 'sale'],
+    'depends': ['gift_card_design', 'sale'],
     'installable': True,
     'auto_install': True,
     'license': 'LGPL-3',
