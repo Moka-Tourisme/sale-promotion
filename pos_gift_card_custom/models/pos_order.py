@@ -10,11 +10,12 @@ class PosOrder(models.Model):
 
     @api.model
     def create_from_ui(self, orders, draft=False):
-        order_ids = super(PosOrder, self).create_from_ui(orders, draft)
+        order_ids = super(PosOrder,self).create_from_ui(orders, draft)
         for order in self.sudo().browse([o["id"] for o in order_ids]):
             gift_card_config = order.config_id.gift_card_settings
             for line in order.lines:
-                if line.product_id.type == "gift":
+                #
+                if line.product_id.detailed_type == "gift":
                     if not line.gift_card_id:
                         if gift_card_config == "create_set":
                             new_card = line._create_gift_cards()
@@ -32,6 +33,4 @@ class PosOrder(models.Model):
 
                             if gift_card_config == "scan_set":
                                 gift_card.initial_amount = line.price_unit
-
         return order_ids
-

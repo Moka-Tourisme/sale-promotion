@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Copyright 2022 Moka Tourisme (https://www.mokatourisme.fr).
+# @author Romain DUCIEL<romain@mokatourisme.fr>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -8,5 +9,5 @@ from odoo.exceptions import UserError
 class GiftCardCustom(models.Model):
     _inherit = "gift.card"
 
-    product_id = fields.Many2one('product.template', ondelete='cascade', string="Product", required=True, store=True, readonly=False)
+    product_template_id = fields.Many2one('product.template', string="Product", required=True)
 

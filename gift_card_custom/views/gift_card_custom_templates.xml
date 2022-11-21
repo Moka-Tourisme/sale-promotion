@@ -6,27 +6,27 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Gift Card" name="gift_card" attrs="{'invisible':[('type', '!=', 'gift')]}">
+                <page string="Gift Card" name="gift_card" attrs="{'invisible':[('detailed_type', '!=', 'gift')]}">
                     <group name="gift_card" string="Gift Card Infos">
                         <group>
-                            <field name="custom_header" widget='image'/>
+                            <field name="gift_card_header" widget='image'/>
                         </group>
                         <group>
-                            <field name="title" widget=''/>
-                            <label for="show_balance"/>
+                            <field name="gift_card_title" widget=''/>
+                            <label for="gift_card_balance"/>
                             <div class="o_row" name="Show Balance">
-                                <field name="show_balance" widget="boolean"/>
+                                <field name="gift_card_balance" widget="boolean"/>
                             </div>
                         </group>
                     </group>
                     <group>
-                        <label for="description_card"/>
-                        <div class="o_row" name="description_card">
-                            <field name="description_card" widget='html' options="{'codeview':true}"/>
+                        <label for="gift_card_description"/>
+                        <div class="o_row" name="gift_card_description">
+                            <field name="gift_card_description" widget='html' options="{'codeview':true}"/>
                         </div>
-                        <label for="condition_card"/>
-                        <div class="o_row" name="condition_card">
-                            <field name="condition_card" widget='html' options="{'codeview':true}"/>
+                        <label for="gift_card_condition"/>
+                        <div class="o_row" name="gift_card_condition">
+                            <field name="gift_card_condition" widget='html' options="{'codeview':true}"/>
                         </div>
                     </group>
                 </page>
@@ -41,7 +41,7 @@
         <field name="inherit_id" ref="gift_card.gift_card_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='gift_card']" position="inside">
-                <field name="product_id" domain="[('type','=', 'gift')]"/>
+                <field name="product_template_id" domain="[('detailed_type','=', 'gift')]"/>
             </xpath>
         </field>
     </record>

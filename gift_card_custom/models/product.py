@@ -1,35 +1,22 @@
-# -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Copyright 2022 Moka Tourisme (https://www.mokatourisme.fr).
+# @author Romain DUCIEL<romain@mokatourisme.fr>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
-
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    detailed_type = fields.Selection(selection_add=[
-        ('gift', 'Gift Card'),
-    ], ondelete={'gift': 'set service'})
+    gift_card_title = fields.Char(translate=True)
 
-    type = fields.Selection(selection_add=[
-        ('gift', 'Gift Card')
-    ], ondelete={'product': 'set service'})
+    gift_card_description = fields.Html('Description', translate=True)
 
-    title = fields.Char(translate=True)
+    gift_card_condition = fields.Html('Condition', translate=True)
 
-    description_card = fields.Html('Description', translate=True)
+    gift_card_balance = fields.Boolean(default=True)
 
-    condition_card = fields.Html('Condition', translate=True)
-
-    show_balance = fields.Boolean(default=True)
-
-    custom_header = fields.Binary()
-
-    def _detailed_type_mapping(self):
-        type_mapping = super()._detailed_type_mapping()
-        type_mapping['gift'] = 'gift'
-        return type_mapping
+    gift_card_header = fields.Binary()
 
     @api.ondelete(at_uninstall=False)
     def _unlink_gift_card_product(self):

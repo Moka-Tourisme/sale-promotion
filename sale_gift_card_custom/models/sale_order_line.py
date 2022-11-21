@@ -9,5 +9,5 @@ class SaleOrderLine(models.Model):
 
     def _build_gift_card(self):
         gift_card = super()._build_gift_card()
-        gift_card['product_id'] = self.product_template_id.id
+        gift_card['product_template_id'] = self.product_template_id.id
         return gift_card
