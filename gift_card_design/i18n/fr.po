@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* gift_card_design
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-10 16:13+0000\n"
+"PO-Revision-Date: 2022-11-10 16:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: gift_card_design
+#: model:ir.model.fields,field_description:gift_card_design.field_product_product__gift_card_condition
+#: model:ir.model.fields,field_description:gift_card_design.field_product_template__gift_card_condition
+msgid "Condition"
+msgstr ""
+
+#. module: gift_card_design
+#: code:addons/gift_card_design/models/product.py:0
+#: code:addons/gift_card_design/models/product.py:0
+#, python-format
+msgid "Deleting the Gift Card Pay product is not allowed."
+msgstr ""
+
+#. module: gift_card_design
+#: model:ir.model.fields,field_description:gift_card_design.field_product_product__gift_card_description
+#: model:ir.model.fields,field_description:gift_card_design.field_product_template__gift_card_description
+msgid "Description"
+msgstr ""
+
+#. module: gift_card_design
+#: model:ir.model,name:gift_card_design.model_gift_card
+#: model_terms:ir.ui.view,arch_db:gift_card_design.page_gift_card_template
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+#. module: gift_card_design
+#: model:ir.model.fields,field_description:gift_card_design.field_product_product__gift_card_balance
+#: model:ir.model.fields,field_description:gift_card_design.field_product_template__gift_card_balance
+msgid "Gift Card Balance"
+msgstr "Balance"
+
+#. module: gift_card_design
+#: model:ir.model.fields,field_description:gift_card_design.field_product_product__gift_card_header
+#: model:ir.model.fields,field_description:gift_card_design.field_product_template__gift_card_header
+msgid "Gift Card Header"
+msgstr "Image de la carte cadeau"
+
+#. module: gift_card_design
+#: model_terms:ir.ui.view,arch_db:gift_card_design.page_gift_card_template
+msgid "Gift Card Infos"
+msgstr "Informations Carte Cadeau"
+
+#. module: gift_card_design
+#: model:ir.model.fields,field_description:gift_card_design.field_product_product__gift_card_title
+#: model:ir.model.fields,field_description:gift_card_design.field_product_template__gift_card_title
+msgid "Gift Card Title"
+msgstr "Titre de la carte cadeau"
+
+#. module: gift_card_design
+#: model:ir.model.fields,field_description:gift_card_design.field_gift_card__product_template_id
+msgid "Product"
+msgstr "Article"
+
+#. module: gift_card_design
+#: model:ir.model,name:gift_card_design.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
