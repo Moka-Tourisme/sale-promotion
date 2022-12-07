@@ -11,3 +11,4 @@ class GiftCardDesign(models.Model):
 
     product_template_id = fields.Many2one('product.template', string="Product", required=True)
 
+    customer_id = fields.Many2one('res.partner', string="Customer", required=True)

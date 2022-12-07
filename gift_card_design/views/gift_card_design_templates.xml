@@ -42,6 +42,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group[@name='gift_card']" position="inside">
                 <field name="product_template_id" domain="[('detailed_type','=', 'gift')]"/>
+                <field name="customer_id"/>
             </xpath>
         </field>
     </record>
