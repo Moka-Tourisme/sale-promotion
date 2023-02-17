@@ -29,7 +29,7 @@ WebsiteSaleDeliveryWidget.include({
     //--------------------------------------------------------------------------
 
     /**
-     * Loads Mondial Relay the first time, else show it.
+     * Loads Withdrawal Points the first time, else show it.
      *
      * @override
      */
@@ -39,14 +39,13 @@ WebsiteSaleDeliveryWidget.include({
             if (!$('#modal_withdrawal').length) {
                 this._loadWithdrawalPointModal(result);
             } else {
-                this.$modal_withdrawal.find('#btn_confirm_withdrawal_point').toggleClass('disabled', !result.mondial_relay.current);
+                this.$modal_withdrawal.find('#btn_confirm_withdrawal_point').toggleClass('disabled', !result.withdrawal_point.current);
                 this.$modal_withdrawal.modal('show');
             }
         }
     },
     /**
-     * This method render the modal, and inject it in dom with the Modial Relay Widgets script.
-     * Once script loaded, it initialize the widget pre-configured with the information of result
+     * This method render the modal, and inject it in dom with the withdrawal points.
      *
      * @private
      *
@@ -81,6 +80,7 @@ WebsiteSaleDeliveryWidget.include({
                     domain: [['id', '=', item]],
                 }
             }).then(async (result) => {
+                // Clone the HTML element, and update the date for each withdrawal point
                 let clone = addressCard.cloneNode(true);
                 clone.classList.remove('d-none')
                 clone.id = result[0].id
@@ -132,17 +132,25 @@ WebsiteSaleDeliveryWidget.include({
             this.$modal_withdrawal.modal('hide');
         });
     },
+    /**
+     * Update the withdrawal point and refresh the UI.
+     *
+     * @private
+     *
+     */
     _onClickWithdrawalPoint: async function () {
         const modal = this.$modal_withdrawal = $('#modal_withdrawal');
         const withdrawalCard = document.querySelector('.withdrawalCard')
         modal.find('.WP_RDaysList')[0].innerHTML = ""
         let id = this.$calendar
+        // Search the planning for the current withdrawal point selected
         await this._rpc({
             model: 'resource.calendar', method: 'search_read', kwargs: {
                 fields: ['attendance_ids'], domain: [['id', '=', id]]
             }
         }).then(async (resource_calendar) => {
             let working_days = [];
+            // For each working lines, get the data and update the UI
             for (const calendar_attendance of resource_calendar[0].attendance_ids) {
                 await this._rpc({
                     model: 'resource.calendar.attendance', method: 'search_read', kwargs: {
@@ -186,6 +194,7 @@ WebsiteSaleDeliveryWidget.include({
                             dateWithdrawal.hour_from = this._convertFloatToTime(resource_calendar_attendance[0].hour_from)
                             dateWithdrawal.hour_to = this._convertFloatToTime(resource_calendar_attendance[0].hour_to)
                             dateWithdrawal.date = new Date(nextDay)
+                            dateWithdrawal.picking_type_id = this.$stock_picking_type_id
                             dateWithdrawal.commitment_date = new Date(nextDay.getFullYear(), nextDay.getMonth(), nextDay.getDate(), dateWithdrawal.hour_from.toString().split(":")[0], dateWithdrawal.hour_from.toString().split(":")[1]).toLocaleDateString("fr", {
                                 hour: '2-digit', minute: '2-digit'
                             })
