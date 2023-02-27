@@ -8,9 +8,11 @@
     "license": "AGPL-3",
     "depends": [
         "stock",
-        "delivery"
+        "delivery",
+        "hr"
     ],
     "data": [
+        'data/withdrawal_data.xml',
         'security/ir.model.access.csv',
         'security/delivery_carrier_security.xml',
         'views/withdrawal_methods.xml',

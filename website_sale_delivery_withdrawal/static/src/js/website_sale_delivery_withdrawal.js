@@ -57,6 +57,8 @@ WebsiteSaleDeliveryWidget.include({
         // add modal to body and bind 'save' button
         $(QWeb.render('website_sale_delivery_withdrawal', {})).appendTo('body');
         const modal = this.$modal_withdrawal = $('#modal_withdrawal');
+        console.log(modal);
+        console.log(this);
         document.querySelector('#btn_confirm_withdrawal_point').addEventListener("click", () => {
             this._onClickBtnConfirmWithdrawalPoint()
         })
@@ -64,7 +66,7 @@ WebsiteSaleDeliveryWidget.include({
         this.$number_delivery_period = 0;
         this.$select_delivery_period = "day"
         const addressCard = document.querySelector('.addressCard')
-        this.$modal_withdrawal.find('#btn_confirm_relay').on('click', this._onClickBtnConfirmRelay.bind(this));
+        this.$modal_withdrawal.find('#btn_confirm_relay').on('click', this._onClickBtnConfirmWithdrawalPoint.bind(this));
         await this._rpc({
             model: 'delivery.carrier', method: 'search_read', kwargs: {
                 fields: ['number_delivery_period', 'select_delivery_period'], domain: [['id', '=', result.carrier_id]],
@@ -89,12 +91,13 @@ WebsiteSaleDeliveryWidget.include({
                         modal.find('.WP_RList')[0].querySelector('.active').classList.remove('active');
                     }
                     clone.classList.add('active');
+                    console.log(result[0])
                     this.$calendar = result[0].resource_calendar_id[0]
                     this.$city = result[0].partner_address_city
                     this.$street = result[0].partner_address_street
                     this.$zip = result[0].partner_address_zip
                     this.$country = result[0].partner_country_id
-                    this.$stock_picking_type_id = result[0].stock_picking_type_id
+                    this.$picking_type_id = result[0].stock_picking_type_id[0]
                     this._onClickWithdrawalPoint()
                 });
                 clone.querySelector('.WPTitle').innerHTML = (index + " - " + result[0].partner_address_city).toUpperCase();
@@ -118,7 +121,6 @@ WebsiteSaleDeliveryWidget.include({
      *
      */
     _onClickBtnConfirmWithdrawalPoint: function () {
-        console.log(this)
         if (!this.lastRelaySelected) {
             return;
         }
@@ -127,7 +129,6 @@ WebsiteSaleDeliveryWidget.include({
                 ...this.lastRelaySelected,
             },
         }).then((o) => {
-            console.log(this)
             $('#address_on_payment').html(o.address);
             this.$modal_withdrawal.modal('hide');
         });
@@ -194,7 +195,7 @@ WebsiteSaleDeliveryWidget.include({
                             dateWithdrawal.hour_from = this._convertFloatToTime(resource_calendar_attendance[0].hour_from)
                             dateWithdrawal.hour_to = this._convertFloatToTime(resource_calendar_attendance[0].hour_to)
                             dateWithdrawal.date = new Date(nextDay)
-                            dateWithdrawal.picking_type_id = this.$stock_picking_type_id
+                            dateWithdrawal.picking_type_id = this.$picking_type_id
                             dateWithdrawal.commitment_date = new Date(nextDay.getFullYear(), nextDay.getMonth(), nextDay.getDate(), dateWithdrawal.hour_from.toString().split(":")[0], dateWithdrawal.hour_from.toString().split(":")[1]).toLocaleDateString("fr", {
                                 hour: '2-digit', minute: '2-digit'
                             })
