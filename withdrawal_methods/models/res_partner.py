@@ -7,8 +7,6 @@ from odoo import fields, models, api
 class ResPartnerMondialRelay(models.Model):
     _inherit = 'res.partner'
 
-    is_withdrawal = fields.Boolean(string="Is a withdrawal address ?")
-
     partner_calendar_id = fields.Many2many(
         "resource.calendar",
         string="Working Hours",

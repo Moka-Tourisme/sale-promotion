@@ -18,10 +18,9 @@
         'views/withdrawal_methods.xml',
         'views/withdrawal_working_hour.xml',
         'views/resource_view.xml',
-        'views/res_partner_withdrawal.xml',
+        # 'views/res_partner_withdrawal.xml',
     ],
     'web.assets_backend': [
         'static/src/css/*',
-        'static/src/js/withdrawal_points.js'
     ]
 }

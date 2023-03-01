@@ -6,11 +6,12 @@
         <field name="priority" eval="20"/>
         <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
         <field name="arch" type="xml">
-
             <xpath expr="//group[@name='provider_details']" position="inside">
                 <field name="is_withdrawal_point"/>
-                <label for="number_delivery_period" string="Plage de livraison"/>
-                <div class="oe_inline o_withdrawal_config" style="display: flex;">
+                <label for="number_delivery_period" string="Delivery range"
+                       attrs="{'invisible': [('is_withdrawal_point', '!=', True)]}"/>
+                <div class="oe_inline o_withdrawal_config" style="display: flex;"
+                     attrs="{'invisible': [('is_withdrawal_point', '!=', True)]}">
                     <field name="number_delivery_period" class="o_number_delivery_period" nolabel="1"/>
                     <field name="select_delivery_period" class="o_select_delivery_period" nolabel="1"/>
                 </div>

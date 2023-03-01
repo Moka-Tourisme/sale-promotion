@@ -52,7 +52,6 @@ WebsiteSaleDeliveryWidget.include({
      * @param {Object} result: dict returned by call of _update_website_sale_delivery_return (python)
      */
     _loadWithdrawalPointModal: async function (result) {
-        let index = 1
 
         // add modal to body and bind 'save' button
         $(QWeb.render('website_sale_delivery_withdrawal', {})).appendTo('body');
@@ -78,7 +77,7 @@ WebsiteSaleDeliveryWidget.include({
         for (const item of result.withdrawal_point.allowed_points) {
             await this._rpc({
                 model: 'delivery.withdrawal.point', method: 'search_read', kwargs: {
-                    fields: ['partner_address_street', 'partner_address_city', 'partner_address_zip', 'partner_country_id', 'resource_calendar_id', 'stock_picking_type_id'],
+                    fields: ['partner_address_street', 'partner_address_city', 'partner_address_zip', 'partner_country_id', 'partner_image_url', 'resource_calendar_id', 'stock_picking_type_id'],
                     domain: [['id', '=', item]],
                 }
             }).then(async (result) => {
@@ -100,11 +99,11 @@ WebsiteSaleDeliveryWidget.include({
                     this.$picking_type_id = result[0].stock_picking_type_id[0]
                     this._onClickWithdrawalPoint()
                 });
-                clone.querySelector('.WPTitle').innerHTML = (index + " - " + result[0].partner_address_city).toUpperCase();
-                clone.querySelector('.WPStreet').innerHTML = (result[0].partner_address_street).toUpperCase();
-                clone.querySelector('.WPCity').innerHTML = (result[0].partner_address_zip + " - " + result[0].partner_address_city).toUpperCase();
+                clone.querySelector('.WPTitle').innerHTML = (result[0].partner_address_city).toUpperCase();
+                clone.querySelector('.WPStreet').innerHTML = clone.querySelector('.WPStreet').innerHTML + (result[0].partner_address_street).toUpperCase();
+                clone.querySelector('.WPCity').innerHTML = (result[0].partner_address_zip) + " - " + (result[0].partner_address_city).toUpperCase();
+                clone.querySelector('.imgPartner').src = "data:image/gif;base64," + result[0].partner_image_url;
                 modal.find('.WP_RList')[0].append(clone);
-                index++
             })
         }
         this.$modal_withdrawal.modal('show');
@@ -218,10 +217,11 @@ WebsiteSaleDeliveryWidget.include({
                     this.$modal_withdrawal.find('#btn_confirm_withdrawal_point').removeClass('disabled');
                     cloneWithdrawal.classList.add('active');
                 });
-                cloneWithdrawal.querySelector('.WPDate').innerHTML = (new Date(sortedDate.date).toLocaleDateString(undefined, {
-                    day: 'numeric', month: 'short'
-                })).toUpperCase()
-                cloneWithdrawal.querySelector('.WPCalendarText').innerHTML = sortedDate.hour_from + " to " + sortedDate.hour_to;
+                cloneWithdrawal.querySelector('.WPDay').innerHTML = (new Date(sortedDate.date).toLocaleDateString(undefined, {
+                    day: 'numeric'})).toUpperCase()
+                cloneWithdrawal.querySelector('.WPMonth').innerHTML = (new Date(sortedDate.date).toLocaleDateString(undefined, {month: 'short'})).toUpperCase()
+                cloneWithdrawal.querySelector('.WPHourSlotFrom').innerHTML = sortedDate.hour_from;
+                cloneWithdrawal.querySelector('.WPHourSlotTo').innerHTML = sortedDate.hour_to;
                 modal.find('.WP_RDaysList')[0].append(cloneWithdrawal);
             })
         })
