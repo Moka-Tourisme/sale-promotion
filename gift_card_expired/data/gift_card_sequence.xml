@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="seq_gc_expired" model="ir.sequence">
+            <field name="name">Gift Card Expired</field>
+            <field name="code">gift.card.expired</field>
+            <field name="padding">5</field>
+            <field name="prefix">GC/</field>
+        </record>
+    </data>
+</odoo>

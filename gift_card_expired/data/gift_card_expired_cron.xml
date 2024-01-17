@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ir_cron_data_gift_card_expired" model="ir.cron">
+        <field name="name">Gift Card Expired</field>
+        <field name="active" eval="False"/>
+        <field name="model_id" ref="model_gift_card"/>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="code">model._cron_gift_card_expired()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+</odoo>
