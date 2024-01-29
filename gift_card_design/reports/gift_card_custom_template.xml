@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_gift_card_custom" model="report.paperformat">
+        <field name="name">Custom Paperformat for the Custom Gift Card report</field>
+        <field name="default" eval="False"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <record id="gift_card_custom_report" model="ir.actions.report">
+        <field name="name">Gift Card Custom Report</field>
+        <field name="model">gift.card</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gift_card_design.custom_gift_card_template</field>
+        <field name="report_file">gift_card_design.custom_gift_card_template</field>
+        <field name="binding_model_id" ref="gift_card.model_gift_card"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_gift_card_custom"/>
+    </record>
+
+    <template id="custom_gift_card_template">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="gift_card_design.report_gift_card_document" t-lang="o.customer_id.lang"/>
+        </t>
+    </template>
+
+    <template id="report_gift_card_document">
+        <t t-call="web.basic_layout">
+            <link rel="stylesheet" href="/gift_card_design/static/src/css/gift_card.css"/>
+            <div class="mainpage">
+                <!--                <div class="logo">-->
+                <!--                    <img src="/compagniedudragon/static/src/img/dragon.png"-->
+                <!--                         class="img_dragon"/>-->
+                <!--                </div>-->
+                <!--Customized header-->
+                <div class="customized_header"
+                     t-attf-style="background-image:url('data:image/png;base64,#{o.product_template_id.gift_card_header}')">
+                </div>
+                <!--Customized Title-->
+                <div class="div_customized_title_and_balance">
+                    <div class="div_customized_title"
+                         t-attf-style="background-color:#{o.product_template_id.title_background_color}">
+                        <p class="customized_title" t-attf-style="color:#{o.product_template_id.title_text_color}">
+                            <t t-if="o.product_template_id.gift_card_title"
+                               t-esc="o.product_template_id.gift_card_title"/>
+                            <t t-if="not o.product_template_id.gift_card_title" t-esc="o.product_template_id.name"/>
+                        </p>
+                    </div>
+                    <t t-if="o.product_template_id.gift_card_balance">
+                        <div class="div_show_balance"
+                             t-attf-style="background-color:#{o.product_template_id.balance_background_color}">
+                            <center>
+                                <div class="balance" t-attf-style="color:#{o.product_template_id.balance_text_color}">
+                                    <p>
+                                        Amount
+                                    </p>
+                                    <p>
+                                        <t t-if="o.product_template_id.gift_card_balance" t-esc="o.initial_amount"/>
+                                        €
+                                    </p>
+                                </div>
+                            </center>
+                        </div>
+                    </t>
+                </div>
+                <div class="div_description_card"
+                     t-attf-style="background-color:#{o.product_template_id.description_background_color}">
+                    <t t-esc="o.product_template_id.gift_card_description"
+                       t-attf-style="color: #{o.product_template_id.description_text_color}"/>
+                </div>
+                <div class="div_code_card" t-attf-style="background-color:#{o.product_template_id.code_background_color}">
+                    <div class="div_code_validity" t-attf-style="color: #{o.product_template_id.description_text_color}">
+                        <p>Code to be used when ordering online or at the counter before
+                            <b>
+                                <span t-field="o.expired_date" t-options='{"format": "d/MM/yyyy"}'/>
+                            </b>
+                            <br></br>
+                            <p class="code">
+                                <span t-field="o.code"/>
+                            </p>
+
+                        </p>
+                    </div>
+                    <div class="div_barcode">
+                        <center>
+                            <div class="barcode">
+                                <img class="barcode_img" t-att-src="'/report/barcode/Code128/'+o.code"/>
+                            </div>
+                            <div class="div_warning">
+                                <b class="warning_barcode">This code is not a ticket</b>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+                <div class="div_custom_conditions" t-attf-style="background-color:#{o.product_template_id.condition_background_color}">
+                    <t t-esc="o.product_template_id.gift_card_condition" t-attf-style="color: #{o.product_template_id.condition_text_color}"/>
+                </div>
+                <div class="div_footer">
+                    <hr></hr>
+                    <ul>
+                        <li>
+                            <t t-esc="o.company_id.name"/>
+                        </li>
+                        <li>
+                            <t t-esc="o.company_id.street"/>
+                        </li>
+                        <li>
+                            <t t-esc="o.company_id.street2"/>,
+                            <t t-esc="o.company_id.zip"/>
+                            <t t-esc="o.company_id.city"/>
+                        </li>
+                        <li>
+                            <t t-esc="o.company_id.email"/>
+                        </li>
+                        <li>
+                            <t t-esc="o.company_id.phone"/>
+                        </li>
+                        <li>
+                            <t t-esc="o.company_id.vat"/>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

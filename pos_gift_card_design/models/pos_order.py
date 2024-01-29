@@ -35,3 +35,22 @@ class PosOrder(models.Model):
                             if gift_card_config == "scan_set":
                                 gift_card.initial_amount = line.price_unit
         return order_ids
+
+    def _add_mail_attachment(self, name, ticket):
+        attachment = super()._add_mail_attachment(name, ticket)
+        self.ensure_one()
+        if self.config_id.use_gift_card and len(self.get_new_card_ids()) > 0:
+            report = self.env.ref('gift_card_design.gift_card_custom_report')._render_qweb_pdf(self.get_new_card_ids())
+            filename = name + '.pdf'
+            gift_card = self.env['ir.attachment'].create({
+                'name': filename,
+                'type': 'binary',
+                'datas': base64.b64encode(report[0]),
+                'store_fname': filename,
+                'res_model': 'pos.order',
+                'res_id': self.id,
+                'mimetype': 'application/x-pdf'
+            })
+            attachment += [(4, gift_card.id)]
+
+        return attachment

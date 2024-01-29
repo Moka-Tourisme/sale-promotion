@@ -1,0 +1,175 @@
+.mainpage {
+    padding-top: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-bottom: 5%;
+    position: relative;
+}
+
+.customized_header {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    min-height: 21em;
+    max-height: 21em;
+    background-size: cover;
+}
+
+.div_customized_title_and_balance {
+    max-height: 6em;
+    margin-left: -5.2%;
+    margin-top: -6em;
+    z-index: 20;
+    min-height: 6em;
+    position: relative;
+    max-width: 105.5%;
+    min-width: 105.5%;
+}
+
+.div_customized_title {
+    padding-left: 10%;
+    padding-right: 15%;
+    min-height: inherit;
+    width: 83%;
+    float: left;
+    position: relative;
+}
+
+.customized_title {
+    font-weight: bold;
+    font-size: 21px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 35%;
+}
+
+.div_show_balance {
+    background-color: #e84d0e;
+    min-height: inherit;
+    width: 17%;
+    float: left;
+}
+
+.balance {
+    color: white;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+    padding-top: 20%;
+}
+
+.balance p:not(:first-child) {
+    margin-top: -20%;
+    font-size: 24px;
+}
+
+.div_description_card {
+    background-color: #f9f6ea;
+    color: #445161 !important;
+    min-width: 100%;
+    max-height: 16.5em;
+    min-height: 16.5em;
+    padding: 5%;
+}
+
+.div_description_card p {
+    font-size: 13px;
+    line-height: initial;
+}
+
+.div_description_card h1, h2, h3, h4, h5, h6 {
+    color: #445161 !important;
+}
+
+.div_code_card {
+    background-color: #f5efd6;
+    min-width: 100%;
+    min-height: 7em;
+    max-height: 7em;
+    padding: 1%;
+}
+
+.div_code_validity {
+    color: #445161;
+    padding: 2% 7% 2% 4%;
+    font-size: 15px;
+    min-width: 50%;
+    max-width: 50%;
+    min-height: 100%;
+    float: left;
+}
+
+.code {
+    margin-top: -4%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.div_barcode {
+    min-width: 50%;
+    max-width: 50%;
+    min-height: 100%;
+    float: left;
+    background-color: white;
+    padding: 2% 5% 2% 5%;
+}
+
+.barcode_img {
+    width: 100%;
+}
+
+.div_warning {
+
+}
+
+.warning_barcode {
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.div_custom_conditions {
+    color: #445161 !important;
+    min-width: 100%;
+    min-height: 18em;
+    max-height: 18em;
+    padding-top: 2em;
+}
+
+.div_custom_conditions p {
+    font-size: 11px;
+    line-height: initial
+}
+
+.div_footer {
+    min-height: 3em;
+    max-height: 3em;
+    width: 100%;
+    color: #445161;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul li:not(:first-child):before {
+    content: '\2014';
+    position: absolute;
+    margin-left: -10px;
+}
+
+li {
+    float: left;
+    font-size: 8px;
+}
+
+li:not(:first-child) {
+    margin-left: 16px;
+}
+
+hr {
+    border: 1px solid #445161;
+}
+

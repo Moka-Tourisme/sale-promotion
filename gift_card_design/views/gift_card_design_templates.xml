@@ -7,27 +7,50 @@
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
                 <page string="Gift Card" name="gift_card" attrs="{'invisible':[('detailed_type', '!=', 'gift')]}">
-                    <group name="gift_card" string="Gift Card Infos">
+                    <group name="gift_card" string="Gift Card Customisation">
                         <group>
                             <field name="gift_card_header" widget='image'/>
                         </group>
                         <group>
-                            <field name="gift_card_title" widget=''/>
-                            <label for="gift_card_balance"/>
-                            <div class="o_row" name="Show Balance">
-                                <field name="gift_card_balance" widget="boolean"/>
+                            <field name="gift_card_title"/>
+                            <label for="title_text_color" string="Title palette"/>
+                            <div class="o_document_layout_colors d-inline-flex">
+                                <field nolabel="1" name="title_text_color" widget="color"/>
+                                <field nolabel="1" name="title_background_color" widget="color"/>
+                            </div>
+                            <field name="gift_card_balance" widget="boolean"/>
+                            <label for="balance_text_color" string="Balance palette"/>
+                            <div class="o_document_layout_colors d-inline-flex">
+                                <field nolabel="1" name="balance_text_color" widget="color"/>
+                                <field nolabel="1" name="balance_background_color" widget="color"/>
                             </div>
                         </group>
                     </group>
                     <group>
-                        <label for="gift_card_description"/>
-                        <div class="o_row" name="gift_card_description">
+                        <group string="Gift Card Description">
                             <field name="gift_card_description" widget='html' options="{'codeview':true}"/>
-                        </div>
-                        <label for="gift_card_condition"/>
-                        <div class="o_row" name="gift_card_condition">
+                            <label for="description_text_color" string="Description palette"/>
+                            <div class="o_document_layout_colors d-inline-flex">
+                                <field nolabel="1" name="description_text_color" widget="color"/>
+                                <field nolabel="1" name="description_background_color" widget="color"/>
+                                <field nolabel="1" name="code_background_color" widget="color"/>
+                            </div>
+                        </group>
+                        <group string="Gift Card Condition">
                             <field name="gift_card_condition" widget='html' options="{'codeview':true}"/>
-                        </div>
+                            <label for="condition_text_color" string="Condition palette"/>
+                            <div class="o_document_layout_colors d-inline-flex">
+                                <field nolabel="1" name="condition_text_color" widget="color"/>
+                                <field nolabel="1" name="condition_background_color" widget="color"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="validity_select"/>
+                        <field name="validity_date"
+                               attrs="{'invisible':[('validity_select', '!=', 'date')], 'required':[('validity_select', '=', 'date')]}"/>
+                        <field name="validity_duration"
+                               attrs="{'invisible':[('validity_select', '!=', 'duration')], 'required':[('validity_select', '=', 'duration')]}"/>
                     </group>
                 </page>
             </xpath>

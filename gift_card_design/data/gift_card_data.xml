@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <function model="ir.model.data" name="write">
+            <function model="ir.model.data" name="search">
+                <value eval="[('module', '=', 'pos_gift_card'), ('name', '=', 'gift_card_report_pdf')]"/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+
+        <record id="pos_gift_card.gift_card_report_pdf" model="ir.actions.report">
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">gift_card_design.custom_gift_card_template</field>
+            <field name="report_file">gift_card_design.custom_gift_card_template</field>
+            <field name="binding_model_id" ref="gift_card.model_gift_card"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="gift_card_design.paperformat_gift_card_custom"/>
+        </record>
+
+        <function model="ir.model.data" name="write">
+            <function model="ir.model.data" name="search">
+                <value eval="[('module', '=', 'pos_gift_card'), ('name', '=', 'gift_card_report_pdf')]"/>
+            </function>
+            <value eval="{'noupdate': True}"/>
+        </function>
+    </data>
+</odoo>
