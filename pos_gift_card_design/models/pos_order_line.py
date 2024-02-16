@@ -12,7 +12,7 @@ class PosOrderLine(models.Model):
         gift_card['product_template_id'] = self.product_id.product_tmpl_id.id
         gift_card['customer_id'] = self.order_id.partner_id.id
         if self.product_id.product_tmpl_id.validity_select == 'duration':
-            gift_card['expired_date'] = fields.Date.today() + relativedelta(days=self.product_template_id.validity_duration)
+            gift_card['expired_date'] = fields.Date.today() + relativedelta(days=self.product_id.product_tmpl_id.validity_duration)
         elif self.product_id.product_tmpl_id.validity_select == 'date':
             gift_card['expired_date'] = self.product_id.product_tmpl_id.validity_date
         return gift_card
