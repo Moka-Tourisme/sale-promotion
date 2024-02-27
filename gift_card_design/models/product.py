@@ -12,7 +12,7 @@ class ProductTemplate(models.Model):
 
     gift_card_title = fields.Char(translate=True, help='Title of the gift card, if not set, the name of the product will be used')
     title_text_color = fields.Char(readonly=False, default='#000000')
-    title_background_color = fields.Char(readonly=False, default='#ffffff')
+    title_background_color = fields.Char(readonly=False, default='#00FFFFFF')
 
     gift_card_description = fields.Html('Description', translate=True, help='Description of the gift card')
     description_text_color = fields.Char(readonly=False, default='#000000')
@@ -29,6 +29,7 @@ class ProductTemplate(models.Model):
     code_background_color = fields.Char(readonly=False, default='#ffffff')
 
     gift_card_header = fields.Binary()
+    gift_card_description_image = fields.Binary()
 
     validity_select = fields.Selection([
         ('duration', 'Duration'),

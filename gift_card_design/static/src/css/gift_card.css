@@ -16,6 +16,7 @@
 }
 
 .div_customized_title_and_balance {
+    background-color: rgba(0, 255, 255, 0);
     max-height: 6em;
     margin-left: -5.2%;
     margin-top: -6em;
@@ -27,12 +28,20 @@
 }
 
 .div_customized_title {
+    background-color: rgba(0, 255, 255, 0);
     padding-left: 10%;
     padding-right: 15%;
     min-height: inherit;
     width: 83%;
     float: left;
     position: relative;
+}
+
+.div_custom_conditions{
+    min-width: 100%;
+    max-height: 5.5em;
+    min-height: 5.5em;
+    padding: 5%;
 }
 
 .customized_title {
@@ -64,17 +73,20 @@
 }
 
 .div_description_card {
-    background-color: #f9f6ea;
     color: #445161 !important;
     min-width: 100%;
     max-height: 16.5em;
     min-height: 16.5em;
     padding: 5%;
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .div_description_card p {
     font-size: 13px;
     line-height: initial;
+    text-align: center;
 }
 
 .div_description_card h1, h2, h3, h4, h5, h6 {
@@ -82,8 +94,7 @@
 }
 
 .div_code_card {
-    background-color: #f5efd6;
-    min-width: 100%;
+    background-color: #f5efd6;  
     min-height: 7em;
     max-height: 7em;
     padding: 1%;

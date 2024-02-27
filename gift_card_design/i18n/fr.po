@@ -53,6 +53,12 @@ msgid "Gift Card Header"
 msgstr "Image de la carte cadeau"
 
 #. module: gift_card_design
+#: model:ir.model.fields,field_description:gift_card_design.field_product_product__gift_card_description_image
+#: model:ir.model.fields,field_description:gift_card_design.field_product_template__gift_card_description_image
+msgid "Gift Card Description Image"
+msgstr "Image de fond de la description"
+
+#. module: gift_card_design
 #: model_terms:ir.ui.view,arch_db:gift_card_design.page_gift_card_template
 msgid "Gift Card Infos"
 msgstr "Informations Carte Cadeau"

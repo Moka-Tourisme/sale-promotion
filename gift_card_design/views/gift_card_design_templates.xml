@@ -10,6 +10,7 @@
                     <group name="gift_card" string="Gift Card Customisation">
                         <group>
                             <field name="gift_card_header" widget='image'/>
+                            <field name="gift_card_description_image" widget='image'/>
                         </group>
                         <group>
                             <field name="gift_card_title"/>

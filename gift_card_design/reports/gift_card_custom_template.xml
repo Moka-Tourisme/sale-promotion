@@ -36,10 +36,6 @@
         <t t-call="web.basic_layout">
             <link rel="stylesheet" href="/gift_card_design/static/src/css/gift_card.css"/>
             <div class="mainpage">
-                <!--                <div class="logo">-->
-                <!--                    <img src="/compagniedudragon/static/src/img/dragon.png"-->
-                <!--                         class="img_dragon"/>-->
-                <!--                </div>-->
                 <!--Customized header-->
                 <div class="customized_header"
                      t-attf-style="background-image:url('data:image/png;base64,#{o.product_template_id.gift_card_header}')">
@@ -48,6 +44,7 @@
                 <div class="div_customized_title_and_balance">
                     <div class="div_customized_title"
                          t-attf-style="background-color:#{o.product_template_id.title_background_color}">
+                         <!-- Changer la couleur ici -->
                         <p class="customized_title" t-attf-style="color:#{o.product_template_id.title_text_color}">
                             <t t-if="o.product_template_id.gift_card_title"
                                t-esc="o.product_template_id.gift_card_title"/>
@@ -72,7 +69,8 @@
                     </t>
                 </div>
                 <div class="div_description_card"
-                     t-attf-style="background-color:#{o.product_template_id.description_background_color}">
+                t-attf-style="background-image:url('data:image/png;base64,#{o.product_template_id.gift_card_description_image}');background-color:#{o.product_template_id.description_background_color}">
+                     <!-- t-attf-style="')"> -->
                     <t t-esc="o.product_template_id.gift_card_description"
                        t-attf-style="color: #{o.product_template_id.description_text_color}"/>
                 </div>
