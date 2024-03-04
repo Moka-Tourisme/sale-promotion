@@ -78,7 +78,6 @@
     max-height: 16.5em;
     min-height: 16.5em;
     padding: 5%;
-    text-align: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -86,7 +85,6 @@
 .div_description_card p {
     font-size: 13px;
     line-height: initial;
-    text-align: center;
 }
 
 .div_description_card h1, h2, h3, h4, h5, h6 {
