@@ -85,5 +85,4 @@ class Giftcard(models.Model):
                             }),
                         ]
                     })
-                gift_card.write({'state': 'expired'},
-                                {'balance': 0})
+                gift_card.write({'state': 'expired'})
