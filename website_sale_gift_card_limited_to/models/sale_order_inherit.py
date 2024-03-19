@@ -16,7 +16,7 @@ class SaleOrder(models.Model):
             error = _('Gift Card already used.')
         elif gift_card.partner_id and gift_card.partner_id != self.env.user.partner_id:
             error = _('Gift Card are restricted for another user.')
-        elif gift_card.limited_to_product_id not in self.order_line.mapped('product_id.product_tmpl_id'):
+        elif gift_card.limited_to_product_id and gift_card.limited_to_product_id not in self.order_line.mapped('product_id.product_tmpl_id'):
             error = _('Gift Card restricted to specific product.')
 
         amount = min(self.amount_total, gift_card.balance_converted(self.currency_id))

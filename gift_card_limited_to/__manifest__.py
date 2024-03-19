@@ -7,7 +7,7 @@
     'category': 'Sales',
     "license": "AGPL-3",
     'summary': 'Module de personnalisation des cartes cadeaux',
-    'depends': ['gift_card', 'point_of_sale', 'sale'],
+    'depends': ['gift_card', 'point_of_sale', 'sale', 'sale_gift_card'],
     'data': [
         'views/gift_card_view.xml',
         'views/gift_card_design_templates.xml'
