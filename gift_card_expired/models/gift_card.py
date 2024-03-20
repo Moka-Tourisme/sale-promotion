@@ -7,12 +7,15 @@ class Giftcard(models.Model):
     expired_profit_account = fields.Many2one('account.account', string='Expired Profit Account',
                                              help="Account used to record the expired profit of the gift card.")
 
+    used_by_cron = fields.Boolean(string='Used by cron', default=False)
+
     def _cron_gift_card_expired(self):
         gift_card_expired_with_balance = self.env['gift.card'].search([
-            ('state', '=', 'expired'), ('balance', '>', 0)
+            ('state', '=', 'expired'), ('balance', '>', 0), ('used_by_cron', '=', False)
         ])
         gift_card_to_expire = self.env['gift.card'].search([
-            ('state', '=', 'valid'), ('expired_date', '<', fields.Date.today()), ('balance', '>', 0)
+            ('state', '=', 'valid'), ('expired_date', '=', fields.Date.today()), ('balance', '>', 0),
+            ('used_by_cron', '=', False)
         ])
         if gift_card_expired_with_balance:
             self._create_update_account_move_line(gift_card_expired_with_balance)
@@ -85,4 +88,4 @@ class Giftcard(models.Model):
                             }),
                         ]
                     })
-                gift_card.write({'state': 'expired'})
+                gift_card.write({'state': 'expired', 'used_by_cron': True})
