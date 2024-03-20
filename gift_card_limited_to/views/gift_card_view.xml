@@ -6,7 +6,9 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='group_general']" position="inside">
-                <field name="limited_to_product_id"/>  
+                <group string="Gift Card" name="gift_card_group" attrs="{'invisible': [('detailed_type', '!=', 'gift')]}">
+                    <field name="limited_to_product_id"/>  
+                </group>
             </xpath>
         </field>      
     </record>
