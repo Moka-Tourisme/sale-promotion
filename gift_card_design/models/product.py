@@ -8,7 +8,7 @@ from odoo.exceptions import UserError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
     company_id = fields.Many2one(
-        'res.company', default=lambda self: self.env.company, required=True)
+        'res.company', default=lambda self: self.env.company)
 
     gift_card_title = fields.Char(translate=True, help='Title of the gift card, if not set, the name of the product will be used')
     title_text_color = fields.Char(readonly=False, default='#000000')
