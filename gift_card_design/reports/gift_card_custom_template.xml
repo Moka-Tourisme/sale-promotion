@@ -38,29 +38,29 @@
             <div class="mainpage">
                 <!--Customized header-->
                 <div class="customized_header"
-                     t-attf-style="background-image:url('data:image/png;base64,#{o.product_template_id.gift_card_header}')">
+                     t-attf-style="background-image:url('data:image/png;base64,#{o.product_id.gift_card_header}')">
                 </div>
                 <!--Customized Title-->
                 <div class="div_customized_title_and_balance">
                     <div class="div_customized_title"
-                         t-attf-style="background-color:#{o.product_template_id.title_background_color}">
+                         t-attf-style="background-color:#{o.product_id.title_background_color}">
                          <!-- Changer la couleur ici -->
-                        <p class="customized_title" t-attf-style="color:#{o.product_template_id.title_text_color}">
-                            <t t-if="o.product_template_id.gift_card_title"
-                               t-esc="o.product_template_id.gift_card_title"/>
-                            <t t-if="not o.product_template_id.gift_card_title" t-esc="o.product_template_id.name"/>
+                        <p class="customized_title" t-attf-style="color:#{o.product_id.title_text_color}">
+                            <t t-if="o.product_id.gift_card_title"
+                               t-esc="o.product_id.gift_card_title"/>
+                            <t t-if="not o.product_id.gift_card_title" t-esc="o.product_id.display_name"/>
                         </p>
                     </div>
-                    <t t-if="o.product_template_id.gift_card_balance">
+                    <t t-if="o.product_id.gift_card_balance">
                         <div class="div_show_balance"
-                             t-attf-style="background-color:#{o.product_template_id.balance_background_color}">
+                             t-attf-style="background-color:#{o.product_id.balance_background_color}">
                             <center>
-                                <div class="balance" t-attf-style="color:#{o.product_template_id.balance_text_color}">
+                                <div class="balance" t-attf-style="color:#{o.product_id.balance_text_color}">
                                     <p>
                                         Amount
                                     </p>
                                     <p>
-                                        <t t-if="o.product_template_id.gift_card_balance" t-esc="o.initial_amount"/>
+                                        <t t-if="o.product_id.gift_card_balance" t-esc="o.initial_amount"/>
                                         €
                                     </p>
                                 </div>
@@ -69,13 +69,13 @@
                     </t>
                 </div>
                 <div class="div_description_card"
-                t-attf-style="background-image:url('data:image/png;base64,#{o.product_template_id.gift_card_description_image}');background-color:#{o.product_template_id.description_background_color}">
+                t-attf-style="background-image:url('data:image/png;base64,#{o.product_id.gift_card_description_image}');background-color:#{o.product_id.description_background_color}">
                      <!-- t-attf-style="')"> -->
-                    <t t-esc="o.product_template_id.gift_card_description"
-                       t-attf-style="color: #{o.product_template_id.description_text_color}"/>
+                    <t t-esc="o.product_id.gift_card_description"
+                       t-attf-style="color: #{o.product_id.description_text_color}"/>
                 </div>
-                <div class="div_code_card" t-attf-style="background-color:#{o.product_template_id.code_background_color}">
-                    <div class="div_code_validity" t-attf-style="color: #{o.product_template_id.description_text_color}">
+                <div class="div_code_card" t-attf-style="background-color:#{o.product_id.code_background_color}">
+                    <div class="div_code_validity" t-attf-style="color: #{o.product_id.description_text_color}">
                         <p>Code to be used when ordering online or at the counter before
                             <b>
                                 <span t-field="o.expired_date" t-options='{"format": "d/MM/yyyy"}'/>
@@ -98,8 +98,8 @@
                         </center>
                     </div>
                 </div>
-                <div class="div_custom_conditions" t-attf-style="background-color:#{o.product_template_id.condition_background_color}">
-                    <t t-esc="o.product_template_id.gift_card_condition" t-attf-style="color: #{o.product_template_id.condition_text_color}"/>
+                <div class="div_custom_conditions" t-attf-style="background-color:#{o.product_id.condition_background_color}">
+                    <t t-esc="o.product_id.gift_card_condition" t-attf-style="color: #{o.product_id.condition_text_color}"/>
                 </div>
                 <div class="div_footer">
                     <hr></hr>

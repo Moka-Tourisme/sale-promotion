@@ -26,4 +26,4 @@ class GiftCardDesignTest(TestSaleGiftCardCommon):
         self.assertEqual(order.gift_card_count, 1)
         self.assertEqual(len(order.order_line.mapped('generated_gift_card_ids')), 1)
 
-        self.assertEqual(order.order_line.filtered(lambda sale_order_line:sale_order_line.product_id == self.product_gift_card).generated_gift_card_ids.product_template_id, self.product_gift_card.product_tmpl_id)
+        self.assertEqual(order.order_line.filtered(lambda sale_order_line:sale_order_line.product_id == self.product_gift_card).generated_gift_card_ids.product_id, self.product_gift_card.product_tmpl_id)

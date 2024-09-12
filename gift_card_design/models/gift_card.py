@@ -9,6 +9,6 @@ from odoo.exceptions import UserError
 class GiftCardDesign(models.Model):
     _inherit = "gift.card"
 
-    product_template_id = fields.Many2one('product.template', string="Product", required=True)
+    product_id = fields.Many2one('product.product', string="Product", required=True)
 
-    customer_id = fields.Many2one('res.partner', string="Customer", required=True)
+    customer_id = fields.Many2one('res.partner', string="Customer")
