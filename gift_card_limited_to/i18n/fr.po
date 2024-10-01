@@ -1,0 +1,112 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* gift_card_limited_to
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-24 14:03+0000\n"
+"PO-Revision-Date: 2024-07-24 14:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_product__limited_to_category_id
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_template__limited_to_category_id
+#: model:ir.model.fields.selection,name:gift_card_limited_to.selection__gift_card__limited_to__category
+#: model:ir.model.fields.selection,name:gift_card_limited_to.selection__product_template__limited_to__category
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: gift_card_limited_to
+#: model:ir.model,name:gift_card_limited_to.model_gift_card
+#: model_terms:ir.ui.view,arch_db:gift_card_limited_to.gift_card_view_form
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_gift_card__limited_to
+msgid "Limitation Type"
+msgstr "Limitation de type"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_gift_card__limited
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_product__limited
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_template__limited
+msgid "Limited"
+msgstr "Limité"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_gift_card__limited_to_category_id
+msgid "Limited Category"
+msgstr "Catégorie d'articles"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_gift_card__limited_to_product_id
+msgid "Limited Product"
+msgstr "Produit"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_gift_card__limited_to_product_list
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_product__limited_to_product_list
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_template__limited_to_product_list
+msgid "Limited Product List"
+msgstr "Liste de produits"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_product__limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_template__limited_to
+msgid "Limited to"
+msgstr "Limité à"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields.selection,name:gift_card_limited_to.selection__gift_card__limited_to__
+#: model:ir.model.fields.selection,name:gift_card_limited_to.selection__product_template__limited_to__none
+msgid "None"
+msgstr "Rien"
+
+#. module: gift_card_limited_to
+#: model:ir.model,name:gift_card_limited_to.model_pos_order_line
+msgid "Point of Sale Order Lines"
+msgstr "Lignes des commandes du point de vente"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_product__limited_to_product_id
+#: model:ir.model.fields,field_description:gift_card_limited_to.field_product_template__limited_to_product_id
+#: model:ir.model.fields.selection,name:gift_card_limited_to.selection__gift_card__limited_to__product
+#: model:ir.model.fields.selection,name:gift_card_limited_to.selection__product_template__limited_to__product
+msgid "Product"
+msgstr "Produit"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields.selection,name:gift_card_limited_to.selection__gift_card__limited_to__product_list
+#: model:ir.model.fields.selection,name:gift_card_limited_to.selection__product_template__limited_to__product_list
+msgid "Product List"
+msgstr "Liste de produits"
+
+#. module: gift_card_limited_to
+#: model:ir.model,name:gift_card_limited_to.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: gift_card_limited_to
+#: model:ir.model,name:gift_card_limited_to.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,help:gift_card_limited_to.field_product_product__limited_to_category_id
+#: model:ir.model.fields,help:gift_card_limited_to.field_product_template__limited_to_category_id
+msgid "The category of products to which this product is limited."
+msgstr "La catégorie de produits ou cet article est limité à l'utilisation."
+
+#. module: gift_card_limited_to
+#: model:ir.model.fields,help:gift_card_limited_to.field_product_product__limited_to_product_id
+#: model:ir.model.fields,help:gift_card_limited_to.field_product_template__limited_to_product_id
+msgid "The specific product to which this product is limited."
+msgstr "Le produit spécifique auquel cet article est limité à l'utilisation."

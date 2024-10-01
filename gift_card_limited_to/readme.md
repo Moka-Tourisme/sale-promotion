@@ -1,10 +1,12 @@
 gift_card_limited_to
 =========
 
-This module allows you to limit the use of gift cards to a single item. This module must be associated with website_sale_gift_card_limited_to work on the website. 
+This module allows you to limit the use of gift cards to a single item or category. This module must be associated with website_sale_gift_card_limited_to function on the site. 
 
 In the gift card configuration, a field appears: limited to. This field is used to specify an item on which the gift card can be used. 
-This field will also be retrieved in the backend when the card is sold at the point of sale and/or when a quote is made.
+This field will also be retrieved in the backend when the card is sold at the point of sale and/or when an estimate is drawn up.
+
+
 
 Bug Tracker
 ===========

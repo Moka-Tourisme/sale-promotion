@@ -8,7 +8,14 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     def _build_gift_card(self):
-        print('on passe la dedans mon ami')
         gift_card = super()._build_gift_card()
-        gift_card['limited_to_product_id'] = self.product_template_id.limited_to_product_id.id
+        limited_to_product_id = False
+        if self.product_id.limited:
+            if self.product_id.limited_to == 'product':
+                limited_to_product_id = self.product_id.limited_to_product_id.id
+            elif self.product_id.limited_to == 'category':
+                limited_to_product_id = self.product_id.limited_to_category_id.id
+            elif self.product_id.product_tmpl_id.limited_to == 'product_list':
+                limited_to_product_id = self.product.product_tmpl_id.limited_to_product_list.ids
+        gift_card['limited_to_product_id'] = limited_to_product_id
         return gift_card

@@ -6,9 +6,11 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='group_general']" position="inside">
-                <group string="Gift Card" name="gift_card_group" attrs="{'invisible': [('detailed_type', '!=', 'gift')]}">
-                    <field name="limited_to_product_id"/>  
-                </group>
+                    <field name="limited" widget="checkbox"/>
+                    <field name="limited_to" widget="radio" attrs="{'invisible': [('limited', '!=', True)]}"/>
+                    <field name="limited_to_product_id" attrs="{'invisible': ['|', ('limited', '=', False), ('limited_to', '!=', 'product')]}"/>
+                    <field name="limited_to_category_id" attrs="{'invisible': ['|', ('limited', '=', False), ('limited_to', '!=', 'category')]}"/>
+                    <field name="limited_to_product_list" widget="many2many_tags" attrs="{'invisible': ['|', ('limited', '=', False), ('limited_to', '!=', 'product_list')]}"/>
             </xpath>
         </field>      
     </record>
