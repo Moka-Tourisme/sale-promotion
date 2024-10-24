@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="loyalty_card_view_form_inherit" model="ir.ui.view">
+        <field name="name">loyalty.card.view.form</field>
+        <field name="model">loyalty.card</field>
+        <field name="inherit_id" ref="loyalty.loyalty_card_view_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//group" position="after">
+                            <field name="program_type" invisible="1"/>  
+                            <group>
+                                <field name="program_reward_ids" nolabel="1" class="o_loyalty_kanban_inline" mode="kanban"
+                           widget="loyalty_one2many" context="{'program_type': program_type}"/>
+                            </group>
+            </xpath>
+        </field>
+    </record>
+
+    
+
+</odoo>

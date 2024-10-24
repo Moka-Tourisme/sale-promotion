@@ -1,0 +1,115 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* loyalty_card_limited_to
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-23 14:31+0000\n"
+"PO-Revision-Date: 2024-10-23 16:35+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid ""
+"<span attrs=\"{'invisible': [('clear_wallet', '!=', True)]}\"> (or "
+"more)</span>"
+msgstr ""
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "<span>on</span>"
+msgstr ""
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Among"
+msgstr "Parmi"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Clear all promo point(s)"
+msgstr "Supprimer tout les point(s)"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Description on order"
+msgstr "Description sur la commande"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Discount"
+msgstr "Réduction"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Discount product"
+msgstr "Produit en réduction"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Domain"
+msgstr "Domaine"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "In exchange of"
+msgstr "En échange de "
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Limit to category"
+msgstr "Limiter à une catégorie"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Limit to products"
+msgstr "Limiter à des produits"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Limit to tags"
+msgstr "Limiter à des étiquettes de produits"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Limitations"
+msgstr ""
+
+#. module: loyalty_card_limited_to
+#: model:ir.model,name:loyalty_card_limited_to.model_loyalty_card
+msgid "Loyalty Coupon"
+msgstr "Bon de fidélité"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Points"
+msgstr ""
+
+#. module: loyalty_card_limited_to
+#: model:ir.model.fields,field_description:loyalty_card_limited_to.field_loyalty_card__program_reward_ids
+msgid "Program Rewards"
+msgstr "Récompense"
+
+#. module: loyalty_card_limited_to
+#: model:ir.model.fields,field_description:loyalty_card_limited_to.field_loyalty_card__program_type
+msgid "Program Type"
+msgstr "Type de programme"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Quantity rewarded"
+msgstr "Quantité de récompense"
+
+#. module: loyalty_card_limited_to
+#: model_terms:ir.ui.view,arch_db:loyalty_card_limited_to.loyalty_reward_view_form_inherit
+msgid "Reward"
+msgstr "Récompense"
