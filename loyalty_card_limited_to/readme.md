@@ -31,5 +31,5 @@ Credits
 This module is maintained by Moka.
 
 
-This module is a addon for the `Odoo/addons/gift_card <https://github.com/odoo/odoo/tree/16.0/addons/loyalty>` project on GitHub.
+This module is a addon for the `Odoo/addons/gift_card <https://github.com/odoo/odoo/tree/18.0/addons/loyalty>` project on GitHub.
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

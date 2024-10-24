@@ -15,61 +15,75 @@
                 <field name="all_discount_product_ids" invisible="1"/>
                 <sheet>
                     <group>
-                        
-                            <group string="Reward" id="reward_type_group" attrs="{'invisible': [('program_type', 'in', ('gift_card', 'ewallet'))]}">
-                                <field name="reward_type" widget="selection" force_save="1" attrs="{'readonly' : [('program_type', '=', 'buy_x_get_y')]}"/>
-                                <label for="discount" attrs="{'invisible': [('reward_type', '!=', 'discount')]}"/>
-                                <div class="d-flex flex-row" attrs="{'invisible': [('reward_type', '!=', 'discount')]}">
-                                    <field name="discount" class="oe_inline me-1"/>
-                                    <field name="discount_mode" no_label="1" class="w-auto me-1"/>
-                                    <span>on</span>
-                                </div>
-                                <label for="discount_applicability" string="" attrs="{'invisible': [('reward_type', '!=', 'discount')]}"/>
-                                <field name="discount_applicability" nolabel="1" widget="radio" attrs="{'invisible': [('reward_type', '!=', 'discount')]}"/>
-                            </group>
+                        <group string="Reward" name="reward_type_group" invisible="program_type in ('ewallet','gift_card')">
+                            <field name="reward_type" widget="selection" force_save="1" readonly="program_type == 'buy_x_get_y'"/>
+                            <label for="discount" invisible="reward_type != 'discount'"/>
+                            <div class="d-flex flex-row" invisible="reward_type != 'discount'">
+                                <field
+                                    name="discount"
+                                    class="oe_inline me-1 text-end"
+                                    style="max-width: 4rem;"
+                                />
+                                <field name="discount_mode" no_label="1" class="w-auto me-1"/>
+                                <span>on</span>
+                            </div>
+                            <label for="discount_applicability" string="" invisible="reward_type != 'discount'"/>
+                            <field name="discount_applicability" nolabel="1" widget="radio" invisible="reward_type != 'discount'"/>
+                        </group>
 
-                                
-                            <group string="Among" attrs="{'invisible': [('reward_type', '!=', 'product')]}">
-                                <field name="reward_product_qty" string="Quantity rewarded"/>
-                                <field name="reward_product_id" attrs="{'required': [('reward_type', '=', 'product'), ('reward_product_ids', '=', [])]}"/>
-                                <field name="reward_product_tag_id" attrs="{'required': [('reward_type', '=', 'product'), ('reward_product_ids', '=', [])]}"/>
-                            </group>
+                        <group string="Among" invisible="reward_type != 'product'">
+                            <field name="reward_product_qty" string="Quantity rewarded"/>
+                            <field name="reward_product_id" required="reward_type == 'product' and not reward_product_ids"/>
+                            <field name="reward_product_tag_id" required="reward_type == 'product' and not reward_product_ids"/>
+                        </group>
 
-                            <group string="Discount" attrs="{'invisible': ['|', ('reward_type', '!=', 'discount'), ('program_type', 'in', ('gift_card', 'ewallet'))], }">
-                                <field name="discount_max_amount" attrs="{'invisible': [('program_type', '=', 'gift_card')]}"/>
-                                <field name="discount_product_domain" groups="base.group_no_one" widget="domain" options="{'model': 'product.product', 'in_dialog': true}" attrs="{'invisible': [('discount_applicability', '!=', 'specific')]}"/>
-                                <field name="discount_product_ids" widget="many2many_tags" attrs="{'invisible': [('discount_applicability', '!=', 'specific')]}"/>
-                                <field name="discount_product_category_id" attrs="{'invisible': [('discount_applicability', '!=', 'specific')]}"/>
-                                <field name="discount_product_tag_id" attrs="{'invisible': [('discount_applicability', '!=', 'specific')]}"/>
-                            </group>
+                        <group string="Discount" invisible="reward_type != 'discount' or program_type in ('gift_card','ewallet')">
+                            <field name="discount_max_amount"/>
+                            <field
+                                name="tax_ids"
+                                placeholder="Untaxed discount"
+                                widget="many2many_tags"
+                                options="{'no_create': True}"
+                                invisible="discount_applicability != 'order' or
+                                    discount_mode not in ('per_order','per_point')"
+                            />
+                            <field name="discount_product_domain" groups="base.group_no_one" widget="domain" options="{'model': 'product.product', 'in_dialog': true}" invisible="discount_applicability != 'specific'"/>
+                            <field name="discount_product_ids" widget="many2many_tags" invisible="discount_applicability != 'specific'"/>
+                            <field name="discount_product_category_id" invisible="discount_applicability != 'specific'"/>
+                            <field name="discount_product_tag_id" invisible="discount_applicability != 'specific'"/>
+                        </group>
                     </group>
-                    <group string="Points" attrs="{'invisible': ['|', ('user_has_debug', '=', False), ('program_type', 'not in', ('loyalty', 'buy_x_get_y'))]}">
+                    <group string="Points" invisible="not user_has_debug and program_type not in ('loyalty', 'buy_x_get_y')">
                         <group>
                             <label for="required_points" string="In exchange of"/>
                             <div class="o_row">
-                                <field name="required_points" class="oe_edit_only col-2 oe_inline text-center pe-2"/>
+                                <field
+                                    name="required_points"
+                                    class="oe_edit_only col-2 oe_inline text-end pe-2"
+                                    style="max-width: 4rem;"
+                                />
                                 <field name="point_name" no_label="1"/>
-                                <span attrs="{'invisible': [('clear_wallet', '!=', True)]}"> (or more)</span>
+                                <span invisible="not clear_wallet"> (or more)</span>
                             </div>
-                            <label for="clear_wallet" string="Clear all promo point(s)" attrs="{'invisible': ['|','&amp;',('user_has_debug', '=', False), ('program_type', 'in', ('loyalty', 'buy_x_get_y')), ('program_type', 'in', ('ewallet','gift_card'))]}"/>
-                            <div class="o_row" attrs="{'invisible': ['|','&amp;',('user_has_debug', '=', False), ('program_type', 'in', ('loyalty', 'buy_x_get_y')), ('program_type', 'in', ('ewallet','gift_card'))]}">
+                            <label for="clear_wallet" string="Clear all promo point(s)" invisible="(not user_has_debug and program_type in ('loyalty', 'buy_x_get_y')) or program_type in ('gift_card', 'ewallet')"/>
+                            <div class="o_row" invisible="(not user_has_debug and program_type in ('loyalty', 'buy_x_get_y')) or program_type in ('gift_card', 'ewallet')">
                                 <field name="clear_wallet"/>
                             </div>
                         </group>
                     </group>
-                    <group attrs="{'invisible': [('program_type', 'in', ('gift_card', 'ewallet'))]}">
+                    <group invisible="program_type in ('gift_card','ewallet')">
                         <field name="description" string="Description on order"/>
                         <field name="discount_line_product_id" string="Discount product" groups="base.group_no_one"/>
                     </group>
 
-                    <div attrs="{'invisible': [('program_type', '!=', 'gift_card')]}">
+                    <div invisible="program_type != 'gift_card'">
                                 <field name="discount_applicability" eval="specific" invisible="1"/>
                                 <group string="Limitations">
                                     <field name="discount_max_amount" invisible="1"/>
-                                    <field name="discount_product_domain" string="Domain" widget="domain" options="{'model': 'product.product', 'in_dialog': true}" attrs="{'invisible': [('discount_applicability', '!=', 'specific')]}"/>
-                                    <field name="discount_product_ids" string="Limit to products" widget="many2many_tags" attrs="{'invisible': [('discount_applicability', '!=', 'specific')]}"/>
-                                    <field name="discount_product_category_id" string="Limit to category" attrs="{'invisible': [('discount_applicability', '!=', 'specific')]}"/>
-                                    <field name="discount_product_tag_id" string="Limit to tags" attrs="{'invisible': [('discount_applicability', '!=', 'specific')]}"/>
+                                    <field name="discount_product_domain" string="Domain" widget="domain" options="{'model': 'product.product', 'in_dialog': true}" invisible="discount_applicability != 'specific'"/>
+                                    <field name="discount_product_ids" string="Limit to products" widget="many2many_tags" invisible="discount_applicability != 'specific'"/>
+                                    <field name="discount_product_category_id" string="Limit to category" invisible="discount_applicability != 'specific'"/>
+                                    <field name="discount_product_tag_id" string="Limit to tags" invisible="discount_applicability != 'specific'"/>
                                 </group>
                     </div>
                 </sheet>

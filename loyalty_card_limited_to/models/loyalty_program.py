@@ -10,11 +10,6 @@ class LoyaltyProgram(models.Model):
     @api.model
     def _program_type_default_values(self):
         default_values = super(LoyaltyProgram, self)._program_type_default_values()
-        
-        default_values['gift_card']['rule_ids'] = [(5, 0, 0), (0, 0, {
-            'reward_point_amount': 1,
-            'reward_point_mode': 'money',
-        })]
 
         default_values['gift_card']['reward_ids'] = [(5, 0, 0), (0, 0, {
             'discount_applicability': 'specific',
