@@ -6,7 +6,7 @@
     'version': '16.0.0.0.1',
     'category': 'Sale',
     "author": "Moka",
-    "website": "https://www.mokatourisme.fr",
+    "website": "https://www.moka.cloud",
     'depends': ['product', 'loyalty', 'pos_loyalty'],
     'data': [
         'data/paperformat_data.xml',
