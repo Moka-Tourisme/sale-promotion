@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="loyalty_program_view_form_custom" model="ir.ui.view">
+        <field name="name">loyalty.program.view.form.custom</field>
+        <field name="model">loyalty.program</field>
+        <field name="inherit_id" ref="loyalty.loyalty_program_gift_ewallet_view_form"/>
+        <field name="arch" type="xml">
+        <xpath expr="//field[@name='date_to']" position="before">
+            <field name="validity_select"/>
+            <field name="validity_duration" invisible="validity_select != 'duration'"/>
+            <field name="validity_date" invisible="validity_select != 'date'"/>
+        </xpath>
+            <notebook position="inside">
+                <page string="Gift Card Customization" invisible="program_type != 'gift_card'"> 
+                    <group class="row">
+                        <group class="col-6">
+                            <separator string="Header"/>
+                                <field name="gift_card_header" widget="image" class="oe_inline oe_small"/>
+                                <field name="title"/>
+                                <field name="title_text_color" widget="color"/>
+                                <field name="balance"/>
+                        </group>
+                        
+                        <group class="col-6">
+                            <separator string="Content"/>
+                                <field name="gift_card_description_image" widget="image" class="oe_inline oe_small"/>
+                                <field name="description" widget="html" options="{'codeview': true}"/>
+                                <field name="condition" widget="html" options="{'codeview': true}"/>
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
