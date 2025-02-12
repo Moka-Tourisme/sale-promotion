@@ -15,222 +15,118 @@
 
     <template id="report_loyalty_gift_card_document">
         <t t-call="web.basic_layout">
-            <t t-call="web.html_container">
-                <div class="mainpage" style="
-                        padding-top: 5%;
-                        margin-bottom: 5%;
-                        padding-left: 3%;
-                        padding-right: 3%;
-                        position: relative;
-                        page-break-after: always;
-                        max-height: 838pt;
-                        font-size: medium;">
-                    <t t-if="o.program_id.gift_card_header">
-                    <t t-set="img_header" t-value="image_data_uri(o.program_id.gift_card_header)"/>
-                        <div class="customized_header" t-attf-style="display: flex;
-                            width: 100%;
-                            min-width: 100%;
-                            min-height: 20em;
-                            max-height: 20em;
-                            background-size: contain;background-image:url({{img_header}}); background-repeat: no-repeat;">
-                            <t style="background-color: rgba(0, 255, 255, 0);
-                            max-height: 6em;
-                            margin-left: -5.2%;
-                            margin-top: -6em;
-                            z-index: 20;
-                            min-height: 6em;
-                            position: relative;
-                            max-width: 105.5%;
-                            min-width: 105.5%;">
-                            </t>
+            <link rel="stylesheet" type="text/css" href="/loyalty_card_design/static/src/css/loyalty_card.css"/>
+            <div class="mainpage">
+                <div class="logo">
+                    <img t-att-src="image_data_uri(o.program_id.logo)"
+                         t-attf-style="position: absolute; left: 7%; top: #{o.program_id.logo_position}px; width: #{o.program_id.logo_width}px; height: #{o.program_id.logo_height}px;"/>
+                </div>
+                <!--Customized header-->
+                <div class="customized_header"
+                     t-attf-style="background-image:url('data:image/png;base64,#{o.program_id.gift_card_header}')">
+                </div>
+                <!--Customized Title-->
+                <div class="div_customized_title_and_balance">
+                    <div class="div_customized_title"
+                         t-attf-style="background-color:#{o.program_id.primary_background_color}">
+                        <!-- Changer la couleur ici -->
+                        <p class="customized_title" t-attf-style="color:#{o.program_id.title_text_color}">
+                            <t t-if="o.program_id.title"
+                               t-esc="o.program_id.title"/>
+                            <t t-if="not o.program_id.title" t-esc="o.program_id.display_name"/>
+                        </p>
+                    </div>
+                    <t t-if="o.program_id.balance">
+                        <div class="div_show_balance"
+                             t-attf-style="background-color:#{o.program_id.balance_background_color}">
+                            <center>
+                                <div class="balance" t-attf-style="color:#{o.program_id.balance_text_color}">
+                                    <p>
+                                        Amount
+                                    </p>
+                                    <p>
+                                        <t t-if="o.program_id.balance" t-esc="o.points"/>
+                                        €
+                                    </p>
+                                </div>
+                            </center>
                         </div>
                     </t>
-                    <t t-else="">
-                        <div class="customized_header" t-attf-style="display: flex;
-                                width: 100%;
-                                min-width: 100%;
-                                min-height: 19em;
-                                max-height: 19em;
-                                background-size: cover;">
-                            <t style="background-color: rgba(0, 255, 255, 0);
-                            max-height: 6em;
-                            margin-left: -5.2%;
-                            margin-top: -6em;
-                            z-index: 20;
-                            min-height: 6em;
-                            position: relative;
-                            max-width: 105.5%;
-                            min-width: 105.5%;"/>
-                        </div>
-                    </t>
-                    <div class="div_customized_title_and_balance" style="
-                            margin-left: -5.2%;
-                            margin-top: -9.2em;
-                            z-index: 20;
-                            min-height: 6em;
-                            max-height: 6em;
-                            position: relative;
-                            max-width: 100%;
-                            min-width: 100%;">
-                            <div class="customized_title" style="padding-left: 10%;
-                                background-color: #ffffff;
-                                padding-right: 15%;
-                                min-height: inherit;
-                                width: 83%;
-                                float: left;
-                                position: relative;">
-
-                                <p class="customized_title" style="font-weight: bold;
-                                    font-size: 21px;
-                                    text-transform: uppercase;
-                                    position: absolute;
-                                    top: 35%;">
-                                    <t t-if="o.program_id.title">
-                                        <p t-esc="o.program_id.title" t-attf-style="font-weight: bold;
-                                            font-size: 20px;
-                                            text-transform: uppercase;
-                                            position: absolute;
-                                            top: 35%;
-                                            color: #{o.program_id.title_text_color}"/>
-                                    </t>
-                                </p>
-                            
+                </div>
+                <div class="div_description_card"
+                     t-attf-style="background-image:url('data:image/png;base64,#{o.program_id.gift_card_description_image}');background-color:#{o.program_id.secondary_background_color}">
+                    <!-- t-attf-style="')"> -->
+                    <t t-esc="o.program_id.description"
+                       t-attf-style="color: #{o.program_id.text_color}"/>
+                </div>
+                <div class="div_code_card" t-attf-style="background-color:#{o.program_id.primary_background_color}">
+                    <div class="div_code_validity" t-attf-style="color: #{o.program_id.text_color}">
+                        <p>Code to be used when ordering online or at the counter before
+                            <b>
+                                <span t-field="o.expiration_date" t-options='{"format": "d/MM/yyyy"}'/>
+                            </b>
+                            <p class="code">
+                                <span t-field="o.code"/>
+                            </p>
+                        </p>
+                    </div>
+                    <div class="div_barcode">
+                        <center>
+                            <div class="barcode">
+                                <img class="barcode_img" t-att-src="'/report/barcode/Code128/'+o.code"/>
                             </div>
-                            <t t-if="o.program_id.balance">
-                                <div class="div_show_balance">
-                                    <center>
-                                        <div class="balance">
-                                            <p style="font-size:20px;font-weight:bold;text-align:center">
-                                                Amount
-                                                <strong><span t-out="o.points" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}">1000</span></strong>
-                                            </p>
-                                        </div>
-                                    </center>
-                                </div>
-                            </t>
+                            <div class="div_warning">
+                                <b class="warning_barcode">This code is not a ticket</b>
+                            </div>
+                        </center>
                     </div>
-                    <t t-if="o.program_id.gift_card_description_image">
-                    <t t-set="img_description" t-value="image_data_uri(o.program_id.gift_card_description_image)"/>
-                        <div class="div_description_card" t-attf-style="display: flex;
-                            width: 100%;
-                            min-width: 100%;
-                            min-height: 20em;
-                            max-height: 20em;
-                            background-size: contain;background-image:url({{img_description}); background-repeat: no-repeat;">
-
-                            <t t-esc="o.program_id.description" style="line-height: normal"/>
-                        </div>
-                    </t>
-                    <t t-else="">
-                        <div class="div_description_card" t-attf-style="
-                            min-width: 100%;
-                            max-height: 16.5em;
-                            min-height: 16.5em;
-                            padding-left: 5%;
-                            padding-right: 5%;
-                            background-size: contain;
-                            background-repeat: no-repeat;
-                            line-height: normal">
-
-                            
-                            <t t-esc="o.program_id.description" style="line-height: normal"/>
-
-                        </div>
-                    </t>
-                    <div style="min-height: 9em;
-                        max-height: 9em;
-                        padding: 1%;
-                        width: 100%;">
-
-                        <div class="code_validity" style="padding: 2% 7% 2% 4%;
-                            font-size: 15px;
-                            min-width: 50%;
-                            max-width: 50%;
-                            min-height: 100%;
-                            float: left;">
-
-                                <t t-if="o.expiration_date">
-                                Code to be used when ordering online or at the counter before
-                                        <b>
-                                         <t t-esc="o.expiration_date.strftime('%d/%m/%Y')"/>
-                                        </b>
-                                        <br></br>
-                                </t>
-                                <p style="font-size: 18px;
-                                        font-weight: bold;">
-                                    <span t-field="o.code"/>
-                                </p>
-                                
-
-                        </div>
-                                
-                                <div class="div_barcode" style="min-width: 50%;
-                                    max-width: 50%;
-                                    min-height: 100%;
-                                    float: left;
-                                    background-color: white;
-                                    padding: 2% 2% 2% 2%;">
-                                    <center>
-                                        <div class="barcode">
-                                            <img class="barcode_img" t-att-src="'/report/barcode/Code128/'+o.code" style="width:300px;height:50px" alt="Barcode"/>
-                                        </div>
-                                        <div class="div_warning">
-                                            <b class="warning_barcode" style="text-align:center; margin-top: 4px">This code is not a ticket</b>
-                                        </div>
-                                    </center>
-                                    
-                                </div>
-                    </div>
-                    <br></br>
-                    <div style="
-                            min-width: 100%;
-                            min-height: 17em;
-                            max-height: 17em;
-                            line-height: normal">
-                        <t t-esc="o.program_id.condition" style="line-height: normal"/>
-                    </div>
-                    <div class="div_footer" style="min-height: 3em;
+                </div>
+                <div class="div_custom_conditions">
+                    <t t-esc="o.program_id.condition"
+                       t-attf-style="color: #{o.program_id.text_color}"/>
+                </div>
+                <div class="div_footer" style="min-height: 3em;
                         max-height: 3em;
                         width: 100%;
                         color: #445161;">
-                        <hr></hr>
-                        <ul style="list-style-type: none;
+                    <hr></hr>
+                    <ul style="list-style-type: none;
                             margin: 0;
                             padding: 0;
                             overflow: hidden;">
-                            <li style="float: left;
+                        <li style="float: left;
                                 font-size: 8px;">
-                                <t t-esc="o.company_id.name"/>
-                            </li>
-                            <li style="margin-left: 16px;font-size: 8px;float: left;">
-                                <t t-esc="o.company_id.street"/>
-                            </li>
-                            <li style="margin-left: 16px;font-size: 8px;float: left;">
-                                <t t-esc="o.company_id.street2"/>,
-                                <t t-esc="o.company_id.zip"/>
-                                <t t-esc="o.company_id.city"/>
-                            </li>
-                            <li style="margin-left: 16px;font-size: 8px;float: left;">
-                                <t t-esc="o.company_id.email"/>
-                            </li>
-                            <li style="margin-left: 16px;font-size: 8px;float: left;">
-                                <t t-esc="o.company_id.phone"/>
-                            </li>
-                            <li style="margin-left: 16px;font-size: 8px;float: left;">
-                                <t t-esc="o.company_id.vat"/>
-                            </li>
-                        </ul>
+                            <t t-esc="o.company_id.name"/>
+                        </li>
+                        <li style="margin-left: 16px;font-size: 8px;float: left;">
+                            <t t-esc="o.company_id.street"/>
+                        </li>
+                        <li style="margin-left: 16px;font-size: 8px;float: left;">
+                            <t t-esc="o.company_id.street2"/>,
+                            <t t-esc="o.company_id.zip"/>
+                            <t t-esc="o.company_id.city"/>
+                        </li>
+                        <li style="margin-left: 16px;font-size: 8px;float: left;">
+                            <t t-esc="o.company_id.email"/>
+                        </li>
+                        <li style="margin-left: 16px;font-size: 8px;float: left;">
+                            <t t-esc="o.company_id.phone"/>
+                        </li>
+                        <li style="margin-left: 16px;font-size: 8px;float: left;">
+                            <t t-esc="o.company_id.vat"/>
+                        </li>
+                    </ul>
 
-                    </div>
                 </div>
-            </t>
+            </div>
         </t>
     </template>
 
     <template id="custom_gift_card_template">
         <t t-foreach="docs" t-as="o">
-            <t t-call="loyalty_card_design.report_loyalty_gift_card_document" t-lang="o._get_mail_partner().lang or o.env.lang"/>
+            <t t-call="loyalty_card_design.report_loyalty_gift_card_document"
+               t-lang="o._get_mail_partner().lang or o.env.lang"/>
         </t>
     </template>
-    
+
 </odoo>

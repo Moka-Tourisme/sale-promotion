@@ -45,7 +45,7 @@ msgstr "Code barre"
 #: model_terms:ir.ui.view,arch_db:loyalty_card_design.report_loyalty_gift_card_document
 msgid "Code to be used when ordering online or at the counter before"
 msgstr ""
-"Code à utiliser lors de la commande en ligne ou en point de vente "
+"Code à utiliser lors de la commande "
 "avant le"
 
 #. module: loyalty_card_design

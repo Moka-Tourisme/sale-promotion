@@ -5,28 +5,66 @@
         <field name="model">loyalty.program</field>
         <field name="inherit_id" ref="loyalty.loyalty_program_gift_ewallet_view_form"/>
         <field name="arch" type="xml">
-        <xpath expr="//field[@name='date_to']" position="before">
-            <field name="validity_select"/>
-            <field name="validity_duration" attrs="{'invisible': [('validity_select', '!=', 'duration')]}"/>
-            <field name="validity_date" attrs="{'invisible': [('validity_select', '!=', 'date')]}"/>
-        </xpath>
+            <xpath expr="//field[@name='date_to']" position="before">
+                <field name="validity_select"/>
+                <field name="validity_duration" attrs="{'invisible': [('validity_select', '!=', 'duration')]}"/>
+                <field name="validity_date" attrs="{'invisible': [('validity_select', '!=', 'date')]}"/>
+            </xpath>
             <notebook position="inside">
-                <page string="Gift Card Customization" attrs="{'invisible': [('program_type', '!=', 'gift_card')]}"> 
-                    <group class="row">
-                        <group class="col-6">
-                            <separator string="Header"/>
-                                <field name="gift_card_header" widget="image" class="oe_inline oe_small"/>
-                                <field name="title"/>
-                                <field name="title_text_color" widget="color"/>
-                                <field name="balance"/>
+                <page string="Gift Card Customization" attrs="{'invisible': [('program_type', '!=', 'gift_card')]}">
+                    <!--                    <group class="row">-->
+                    <!--                        <group class="col-6">-->
+                    <!--                            <separator string="Header"/>-->
+                    <!--                                <field name="gift_card_header" widget="image" class="oe_inline oe_small"/>-->
+                    <!--                                <field name="title"/>-->
+                    <!--                                <field name="title_text_color" widget="color"/>-->
+                    <!--                                <field name="balance"/>-->
+                    <!--                        </group>-->
+                    <!--                        -->
+                    <!--                        <group class="col-6">-->
+                    <!--                            <separator string="Content"/>-->
+                    <!--                                <field name="gift_card_description_image" widget="image" class="oe_inline oe_small"/>-->
+                    <!--                                <field name="description" widget="html" options="{'codeview': true}"/>-->
+                    <!--                                <field name="condition" widget="html" options="{'codeview': true}"/>-->
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+                    <group name="gift_card" string="Gift Card Customisation">
+                        <group>
+                            <field name="gift_card_header" widget='image'/>
+                            <field name="gift_card_description_image" widget='image'/>
                         </group>
-                        
-                        <group class="col-6">
-                            <separator string="Content"/>
-                                <field name="gift_card_description_image" widget="image" class="oe_inline oe_small"/>
-                                <field name="description" widget="html" options="{'codeview': true}"/>
-                                <field name="condition" widget="html" options="{'codeview': true}"/>
+                        <group>
+                            <field name="logo" widget='image'/>
+                            <field name="logo_position" widget="numeric_step" options="{'step': 1, 'min': 0, 'max': 100}"/>
+                            <field name="logo_width" widget="numeric_step" options="{'step': 1, 'min': 0, 'max': 200}"/>
+                            <field name="logo_height" widget="numeric_step" options="{'step': 1, 'min': 0, 'max': 200}"/>
+                            <field name="title"/>
+                            <field name="title_text_color" widget="color"/>
+                            <field name="balance" widget="boolean"/>
+                            <label for="balance_text_color" string="Balance colors"/>
+                            <div class="o_document_layout_colors d-inline-flex">
+                                <field nolabel="1" name="balance_text_color" widget="color"/>
+                                <field nolabel="1" name="balance_background_color" widget="color"/>
+                            </div>
+                            <field name="primary_background_color" widget="color"/>
+                            <field name="secondary_background_color" widget="color"/>
+                            <field name="text_color" widget="color"/>
                         </group>
+                    </group>
+                    <group>
+                        <group string="Gift Card Description">
+                            <field name="description" widget='html' options="{'codeview':true}"/>
+                        </group>
+                        <group string="Gift Card Condition">
+                            <field name="condition" widget='html' options="{'codeview':true}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="validity_select"/>
+                        <field name="validity_date"
+                               attrs="{'invisible':[('validity_select', '!=', 'date')], 'required':[('validity_select', '=', 'date')]}"/>
+                        <field name="validity_duration"
+                               attrs="{'invisible':[('validity_select', '!=', 'duration')], 'required':[('validity_select', '=', 'duration')]}"/>
                     </group>
                 </page>
             </notebook>

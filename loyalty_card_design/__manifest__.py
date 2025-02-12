@@ -7,7 +7,7 @@
     'category': 'Sale',
     "author": "Moka",
     "website": "https://www.moka.cloud",
-    'depends': ['product', 'loyalty', 'pos_loyalty'],
+    'depends': ['product', 'loyalty', 'pos_loyalty', 'web_widget_numeric_step'],
     'data': [
         'data/paperformat_data.xml',
         'report/loyalty_card_custom_template.xml',
