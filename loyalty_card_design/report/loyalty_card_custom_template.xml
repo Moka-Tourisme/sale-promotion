@@ -17,7 +17,7 @@
         <t t-call="web.basic_layout">
             <link rel="stylesheet" type="text/css" href="/loyalty_card_design/static/src/css/loyalty_card.css"/>
             <div class="mainpage">
-                <div class="logo">
+                <div class="logo" t-if="o.program_id.logo">
                     <img t-att-src="image_data_uri(o.program_id.logo)"
                          t-attf-style="position: absolute; left: 7%; top: #{o.program_id.logo_position}px; width: #{o.program_id.logo_width}px; height: #{o.program_id.logo_height}px;"/>
                 </div>
