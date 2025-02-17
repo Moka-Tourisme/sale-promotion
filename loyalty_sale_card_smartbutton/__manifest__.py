@@ -1,0 +1,19 @@
+# Copyright 2025 Moka
+# @author Horvat Damien <damien@moka.cloud>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+{
+    "name": "Loyalty Sale Card Smartbutton",
+    "summary": "Add a smart button on sale orders to show gift cards",
+    "version": "16.0.1.0.0",
+    "author": "Moka",
+    "website": "https://moka.cloud",
+    "license": "AGPL-3",
+    "category": "Loyalty",
+    "depends": ["sale_loyalty", "loyalty"],
+    "data": [
+        "views/sale_order_views.xml",
+        "views/loyalty_card_views.xml",
+    ],
+    "auto-install": False,
+}
