@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_pos_sale_order_form_inherit_loyalty_cards" model="ir.ui.view">
+        <field name="name">pos.order.form.loyalty.cards</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <field name="loyalty_card_count" invisible="1"/>
+                    <button
+                        name="action_open_pos_order_loyalty_cards"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-gift"
+                        string="Loyalty Cards"
+                        attrs="{'invisible': [('loyalty_card_count', '=', 0)]}">
+                        <field name="loyalty_card_count" widget="statinfo"/>
+                    </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

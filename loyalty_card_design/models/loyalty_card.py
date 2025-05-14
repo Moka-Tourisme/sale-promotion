@@ -6,8 +6,9 @@ class LoyaltyCard(models.Model):
 
     def create(self, vals_list):
         res = super().create(vals_list)
-        if res.program_id.validity_select == 'date':
-            res.expiration_date = res.program_id.validity_date
-        else:
-            res.expiration_date = fields.Date.today() + timedelta(days=res.program_id.validity_duration)
+        for card in res:
+            if card.program_id.validity_select == 'date':
+                card.expiration_date = card.program_id.validity_date
+            else:
+                card.expiration_date = fields.Date.today() + timedelta(days=card.program_id.validity_duration)
         return res
