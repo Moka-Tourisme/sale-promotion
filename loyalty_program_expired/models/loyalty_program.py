@@ -62,7 +62,7 @@ class LoyaltyCard(models.Model):
                     else:
                         self.env['account.move'].create({
                             'ref': self.env['ir.sequence'].next_by_code('gift.card.expired') or '/',
-                            'date': gift_card.expired_date,
+                            'date': gift_card.expiration_date,
                             'journal_id': accounts['journal'].id,  # TODO: Quel journal ?
                             'line_ids': [
                                 (0, 0, {
