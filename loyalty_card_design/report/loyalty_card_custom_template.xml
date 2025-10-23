@@ -12,90 +12,137 @@
         <field name="paperformat_id" ref="paperformat_gift_card_custom"/>
     </record>
 
-
     <template id="report_loyalty_gift_card_document">
         <t t-call="web.basic_layout">
             <link rel="stylesheet" type="text/css" href="/loyalty_card_design/static/src/css/loyalty_card.css"/>
-            <div class="mainpage">
+            <div class="mainpage" style="max-height: 100vh; overflow: hidden;">
                 <div class="logo" t-if="o.program_id.logo">
                     <img t-att-src="image_data_uri(o.program_id.logo)"
                          t-attf-style="position: absolute; left: 7%; top: #{o.program_id.logo_position}px; width: #{o.program_id.logo_width}px; height: #{o.program_id.logo_height}px;"/>
                 </div>
+                
                 <!--Customized header-->
                 <div class="customized_header"
                      t-attf-style="background-image:url('data:image/png;base64,#{o.program_id.gift_card_header}')">
                 </div>
+                
                 <!--Customized Title-->
-                <div class="div_customized_title_and_balance">
+                <div class="div_customized_title_and_balance" style="margin-bottom: 5px; margin-left: 0% !important; max-width: 100% !important; min-width: 100% !important;">
+                    
+                    
+                    <!-- Conditional amount display -->
+                    <t t-if="o.program_id.balance">
+                    <!-- Metttre le if la dedans pour le titre comme ça il a la bonne taille-->
+
                     <div class="div_customized_title"
-                         t-attf-style="background-color:#{o.program_id.primary_background_color}">
-                        <!-- Changer la couleur ici -->
-                        <p class="customized_title" t-attf-style="color:#{o.program_id.title_text_color}">
+                         t-attf-style="background-color:#{o.program_id.primary_background_color}; width: 83%;">
+                        <p class="customized_title" t-attf-style="color:#{o.program_id.title_text_color}; margin: 5px 0;">
                             <t t-if="o.program_id.title"
                                t-esc="o.program_id.title"/>
                             <t t-if="not o.program_id.title" t-esc="o.program_id.display_name"/>
                         </p>
                     </div>
-                    <t t-if="o.program_id.balance">
                         <div class="div_show_balance"
                              t-attf-style="background-color:#{o.program_id.balance_background_color}">
                             <center>
-                                <div class="balance" t-attf-style="color:#{o.program_id.balance_text_color}">
-                                    <p>
-                                        Amount
-                                    </p>
-                                    <p>
-                                        <t t-if="o.program_id.balance" t-esc="o.points"/>
-                                        €
+                                <div class="balance" t-attf-style="color:#{o.program_id.balance_text_color}; margin: 5px 0; padding-top: 10%">
+                                    <p style="margin: 2px 0;">Amount</p>
+                                    <p style="margin: 2px 0;">
+                                        <t t-esc="o.points"/> €
                                     </p>
                                 </div>
                             </center>
                         </div>
                     </t>
-                </div>
-                <div class="div_description_card"
-                     t-attf-style="background-image:url('data:image/png;base64,#{o.program_id.gift_card_description_image}');background-color:#{o.program_id.secondary_background_color}">
-                    <!-- t-attf-style="')"> -->
-                    <t t-esc="o.program_id.description"
-                       t-attf-style="color: #{o.program_id.text_color}"/>
-                </div>
-                <div class="div_code_card" t-attf-style="background-color:#{o.program_id.primary_background_color}">
-                    <div class="div_code_validity" t-attf-style="color: #{o.program_id.text_color}">
-                        <p>Code to be used when ordering online or at the counter before
-                            <b>
-                                <span t-field="o.expiration_date" t-options='{"format": "d/MM/yyyy"}'/>
-                            </b>
-                            <p class="code">
-                                <span t-field="o.code"/>
-                            </p>
+                    <t t-else="">
+                    <div class="div_customized_title"
+                         t-attf-style="background-color:#{o.program_id.primary_background_color};width: 100%;padding-left: 5%;">
+                        <p class="customized_title" t-attf-style="width: 83%;color:#{o.program_id.title_text_color}; margin: 5px 0;">
+                            <t t-if="o.program_id.title"
+                               t-esc="o.program_id.title"/>
+                            <t t-if="not o.program_id.title" t-esc="o.program_id.display_name"/>
                         </p>
                     </div>
-                    <div class="div_barcode">
+                    </t>
+                </div>
+
+                <!-- Gift card information section - Compact version -->
+                <div class="div_gift_info" t-attf-style="background-color:#{o.program_id.secondary_background_color}; color:#{o.program_id.text_color}; font-size: 13px; padding: 5px; margin: 5px 0; margin-top: -1em; padding-left: 5%; !important">
+                    
+                    <!-- Compact layout for gift info -->
+                    <t t-set="gift_info_items" t-value="[]"/>
+                    
+                    <t t-if="o.program_id.show_gifter_info and o.gifter_name">
+                        <t t-set="gift_info_items" t-value="gift_info_items + ['De la part de : ' + str(o.gifter_name) + ' ' ]"/>
+                    </t>
+                    
+                    <t t-if="o.program_id.show_recipient_info and o.recipient_name">
+                        <t t-set="gift_info_items" t-value="gift_info_items + [' Pour : ' + str(o.recipient_name) + ' ' ]"/>
+                    </t>
+                    
+                    <t t-if="o.program_id.show_occasion and o.occasion">
+                        <t t-set="gift_info_items" t-value="gift_info_items + [' ' + str(o.occasion) + ' ' ]"/>
+                    </t>
+                    
+                    <t t-if="o.program_id.show_valid_for_persons and o.valid_for_persons">
+                        <t t-set="person_text" t-value="'personne' if o.valid_for_persons == 1 else 'personnes'"/>
+                        <t t-set="gift_info_items" t-value="gift_info_items + [' Valable pour: ' + str(o.valid_for_persons) + ' ' + person_text]"/>
+                    </t>
+                    
+                    <!-- Display items in a compact format -->
+                    <t t-if="gift_info_items">
+                        <div style="line-height: 1.3;">
+                            <t t-foreach="gift_info_items" t-as="item">
+                                <span t-esc="item"/>
+                                <t t-if="not item_last">   |   </t>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+
+                <div class="div_description_card" style="margin: 5px 0; padding: 5px; margin-top: -1em;"
+                     t-attf-style="background-image:url('data:image/png;base64,#{o.program_id.gift_card_description_image}');background-color:#{o.program_id.secondary_background_color}">
+                    <t t-esc="o.program_id.description"
+                       t-attf-style="color: #{o.program_id.text_color}; font-size: 12px;"/>
+                </div>
+                
+                <div class="div_code_card" style="margin: 5px 0; padding: 5px;" t-attf-style="background-color:#{o.program_id.primary_background_color}">
+                    <div class="div_code_validity" t-attf-style="color: #{o.program_id.text_color}">
+                        <!-- Conditional validity information -->
+                        <p style="margin: 3px 0; font-size: 11px;" t-if="o.program_id.show_validity_info">
+                            Code to be used when ordering online or at the counter
+                            <t t-if="o.expiration_date">
+                                before <b><span t-field="o.expiration_date" t-options='{"format": "dd/MM/yyyy"}'/></b>
+                            </t>
+                        </p>
+                        <p style="margin: 3px 0; font-size: 11px;" t-else="">
+                        </p>
+                        <p class="code" style="margin: 3px 0;">
+                            <span t-field="o.code"/>
+                        </p>
+                    </div>
+                    
+                    <div class="div_barcode" style="margin: 5px 0;">
                         <center>
                             <div class="barcode">
-                                <img class="barcode_img" t-att-src="'/report/barcode/Code128/'+o.code"/>
+                                <img class="barcode_img" t-att-src="'/report/barcode/Code128/'+o.code" style="max-height: 40px;"/>
                             </div>
                             <div class="div_warning">
-                                <b class="warning_barcode">This code is not a ticket</b>
+                                <b class="warning_barcode" style="font-size: 10px;">This code is not a ticket</b>
                             </div>
                         </center>
                     </div>
                 </div>
-                <div class="div_custom_conditions">
+                
+                <div class="div_custom_conditions" style="margin: 5px 0; font-size: 11px;">
                     <t t-esc="o.program_id.condition"
                        t-attf-style="color: #{o.program_id.text_color}"/>
                 </div>
-                <div class="div_footer" style="min-height: 3em;
-                        max-height: 3em;
-                        width: 100%;
-                        color: #445161;">
+                
+                 <div class="div_footer" style="min-height: 3em; max-height: 3em; width: 100%; color: #445161;">
                     <hr></hr>
-                    <ul style="list-style-type: none;
-                            margin: 0;
-                            padding: 0;
-                            overflow: hidden;">
-                        <li style="float: left;
-                                font-size: 8px;">
+                    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
+                        <li style="float: left; font-size: 8px;">
                             <t t-esc="o.company_id.name"/>
                         </li>
                         <li style="margin-left: 16px;font-size: 8px;float: left;">
@@ -116,7 +163,6 @@
                             <t t-esc="o.company_id.vat"/>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </t>

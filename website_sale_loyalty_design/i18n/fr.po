@@ -1,0 +1,136 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_sale_loyalty_design
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-04 11:10+0000\n"
+"PO-Revision-Date: 2025-06-04 13:11+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid ""
+"<i class=\"fa fa-gift me-2\"/>\n"
+"                                Gift Card Information"
+msgstr ""
+"<i class=\"fa fa-gift me-2\"/>&#13;\n"
+"                                Informations de la Carte Cadeau"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid ""
+"<i class=\"fa fa-save me-1\"/>\n"
+"                                        Save Gift Card Information"
+msgstr ""
+"<i class=\"fa fa-save me-1\"/>&#13;\n"
+"                                        Sauvegarder les informations"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "<option value=\"\">Select a custom message...</option>"
+msgstr "<option value=\"\">Sélectionnez un message...</option>"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "Congratulations"
+msgstr "Félicitations"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "From (Your name)"
+msgstr "De la part de :"
+
+#. module: website_sale_loyalty_design
+#: model:ir.model.fields,field_description:website_sale_loyalty_design.field_loyalty_card__gifter_name
+#: model:ir.model.fields,field_description:website_sale_loyalty_design.field_sale_order__gift_card_gifter_name
+msgid "Gifter Name"
+msgstr "De la part de"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "Happy Birthday"
+msgstr "Joyeux Anniversaire !"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "Happy Easter"
+msgstr "Joyeuse pâques !"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "Happy Valentine's Day"
+msgstr "Bonne Saint Valentin !"
+
+#. module: website_sale_loyalty_design
+#: model:ir.model,name:website_sale_loyalty_design.model_loyalty_card
+msgid "Loyalty Coupon"
+msgstr "Bon de fidélité"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "Merry Christmas"
+msgstr "Joyeux Noël !"
+
+#. module: website_sale_loyalty_design
+#: model:ir.model.fields,help:website_sale_loyalty_design.field_loyalty_card__recipient_name
+msgid "Name of the gift recipient"
+msgstr "Nom du bénéficiaire"
+
+#. module: website_sale_loyalty_design
+#: model:ir.model.fields,help:website_sale_loyalty_design.field_loyalty_card__gifter_name
+msgid "Name of the person offering the gift"
+msgstr "Nom de la personne qui offre la carte"
+
+#. module: website_sale_loyalty_design
+#: model:ir.model.fields,field_description:website_sale_loyalty_design.field_loyalty_card__occasion
+#: model:ir.model.fields,field_description:website_sale_loyalty_design.field_sale_order__gift_card_occasion
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "Occasion"
+msgstr "Message personnalisé"
+
+#. module: website_sale_loyalty_design
+#: model:ir.model.fields,help:website_sale_loyalty_design.field_loyalty_card__occasion
+msgid "Occasion for the gift (Christmas, Birthday, etc.)"
+msgstr "Message personnalisé ( Joyeux Anniversaire, Joyeux Noël, etc.)"
+
+#. module: website_sale_loyalty_design
+#: model:ir.model.fields,field_description:website_sale_loyalty_design.field_loyalty_card__recipient_name
+#: model:ir.model.fields,field_description:website_sale_loyalty_design.field_sale_order__gift_card_recipient_name
+msgid "Recipient Name"
+msgstr "Pour"
+
+#. module: website_sale_loyalty_design
+#: model:ir.model,name:website_sale_loyalty_design.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "To (Recipient name)"
+msgstr "Pour :"
+
+#. module: website_sale_loyalty_design
+#: model:ir.actions.server,name:website_sale_loyalty_design.ir_cron_update_gift_cards_ir_actions_server
+#: model:ir.cron,cron_name:website_sale_loyalty_design.ir_cron_update_gift_cards
+msgid "Update Gift Cards Custom Fields"
+msgstr "Mettre à jour les informations"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "Who is offering this gift?"
+msgstr "Qui offre la carte ?"
+
+#. module: website_sale_loyalty_design
+#: model_terms:ir.ui.view,arch_db:website_sale_loyalty_design.gift_card_custom_fields
+msgid "Who will receive this gift?"
+msgstr "Qui va recevoir la carte ?"

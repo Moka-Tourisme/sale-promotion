@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <template id="gift_card_custom_fields" inherit_id="website_sale.cart_lines" name="Gift Card Custom Fields">
+        <xpath expr="//table[@id='cart_products']" position="before">
+            <t t-set="gift_card_program" t-value="None"/>
+            <t t-foreach="website_sale_order.order_line" t-as="line">
+                <t t-set="loyalty_programs" t-value="request.env['loyalty.program'].sudo().search([('program_type', '=', 'gift_card')])"/>
+                <t t-foreach="loyalty_programs" t-as="program">
+                    <t t-if="line.product_id in program.trigger_product_ids">
+                        <t t-set="gift_card_program" t-value="program"/>
+                    </t>
+                </t>
+            </t>
+  
+            <tr class="oe_gift_card_custom_info" style="display: none;" 
+                t-if="gift_card_program and (gift_card_program.show_gifter_info or gift_card_program.show_recipient_info or gift_card_program.show_occasion)">
+                <td colspan="3" class="border-0">
+                    <div class="card mt-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6 class="mb-0">
+                                <i class="fa fa-gift me-2"></i>
+                                Gift Card Information
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <form id="gift_card_form" method="post">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                
+                                <div class="row" t-if="gift_card_program.show_gifter_info or gift_card_program.show_recipient_info">
+                                    <div class="col-md-6" t-if="gift_card_program.show_gifter_info">
+                                        <div class="mb-3">
+                                            <label for="gift_card_gifter_name" class="form-label">From (Your name)</label>
+                                            <input type="text" 
+                                                class="form-control" 
+                                                id="gift_card_gifter_name" 
+                                                name="gift_card_gifter_name" 
+                                                placeholder="Who is offering this gift?"
+                                                t-att-value="website_sale_order.gift_card_gifter_name or ''"/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6" t-if="gift_card_program.show_recipient_info">
+                                        <div class="mb-3">
+                                            <label for="gift_card_recipient_name" class="form-label">To (Recipient name)</label>
+                                            <input type="text" 
+                                                class="form-control" 
+                                                id="gift_card_recipient_name" 
+                                                name="gift_card_recipient_name" 
+                                                placeholder="Who will receive this gift?"
+                                                t-att-value="website_sale_order.gift_card_recipient_name or ''"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row" t-if="gift_card_program.show_occasion">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="gift_card_occasion" class="form-label">Occasion</label>
+                                            <select class="form-select" id="gift_card_occasion" name="gift_card_occasion">
+                                                <option value="">Select a custom message...</option>
+                                                <option  t-att-selected="website_sale_order.gift_card_occasion == 'Happy Birthday' and 'selected'">Happy Birthday</option>
+                                                <option t-att-selected="website_sale_order.gift_card_occasion == 'Merry Christmas' and 'selected'">Merry Christmas</option>
+                                                <option t-att-selected="website_sale_order.gift_card_occasion == 'Congratulations' and 'selected'">Congratulations</option>
+                                                <option t-att-selected="website_sale_order.gift_card_occasion == 'Happy Valentine\'s Day' and 'selected'">Happy Valentine's Day</option>
+                                                <option t-att-selected="website_sale_order.gift_card_occasion == 'Happy Easter' and 'selected'">Happy Easter</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-end mt-3">
+                                    <button type="button" class="btn btn-primary" id="save_gift_card_info">
+                                        <i class="fa fa-save me-1"></i>
+                                        Save Gift Card Information
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+
+    <template id="cart_gift_card_detector" inherit_id="website_sale.cart_lines" name="Gift Card Detector">
+        <xpath expr="//table[@id='cart_products']" position="before">
+            <t t-if="website_sale_order">
+                <script type="text/javascript">
+                    <![CDATA[
+                    document.addEventListener('DOMContentLoaded', function() {
+                        let giftCardDetected = false;
+                        let cartRows = document.querySelectorAll('#cart_products tbody tr');
+                        
+                        cartRows.forEach(function(row) {
+                            let productName = row.querySelector('.td-product_name');
+                            
+                            if (productName) {
+                                let name = productName.textContent.toLowerCase();
+                                if (name.includes('gift') || name.includes('carte') || name.includes('cadeau')) {
+                                    giftCardDetected = true;
+                                }
+                            }
+                        });
+                        
+                        // Afficher/masquer le formulaire
+                        let giftCardForm = document.querySelector('.oe_gift_card_custom_info');
+                        let order_confirmed = document.querySelector('#oe_structure_website_sale_confirmation_1');
+                        
+                        if (giftCardForm && !order_confirmed) {
+                            console.log('Gift card detected:', giftCardDetected);
+                            
+                            if (giftCardDetected) {
+                                giftCardForm.style.display = 'table-row';
+                            } else {
+                                giftCardForm.style.display = 'none';
+                            }
+                        } else {
+                            console.log("Pas de formulaire ou commande confirmée");
+                            console.log("giftCardForm:", giftCardForm);
+                            console.log("order_confirmed:", order_confirmed);
+                        }
+                    });
+                    ]]>
+                </script>
+            </t>
+        </xpath>
+    </template>
+
+
+</odoo>

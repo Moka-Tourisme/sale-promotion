@@ -3,7 +3,7 @@
 {
     'name': 'Loyalty Card Design',
     'summary': 'Allows to design different gift card models and to generate them in PDF format',
-    'version': '16.0.0.0.1',
+    'version': '16.0.1.0.3',
     'category': 'Sale',
     "author": "Moka",
     "website": "https://www.moka.cloud",
@@ -12,6 +12,7 @@
         'data/paperformat_data.xml',
         'report/loyalty_card_custom_template.xml',
         'views/loyalty_program_views.xml',
+        'views/loyalty_card_views.xml',
         'wizard/loyalty_generate_wizard_views.xml',
     ],
     'installable': True,

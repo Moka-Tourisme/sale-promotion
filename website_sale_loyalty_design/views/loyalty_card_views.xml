@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="loyalty_card_view_search_custom" model="ir.ui.view">
+        <field name="name">loyalty.card.view.search.custom</field>
+        <field name="model">loyalty.card</field>
+        <field name="inherit_id" ref="loyalty.loyalty_card_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='program_id']" position="after">
+                <field name="gifter_name"/>
+                <field name="recipient_name"/>
+                <field name="occasion"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

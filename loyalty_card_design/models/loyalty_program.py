@@ -40,3 +40,22 @@ class LoyaltyCardTemplate(models.Model):
     validity_duration = fields.Integer(string='Duration', default=365)
 
     validity_date = fields.Date(string='Date', default=fields.Date.today)
+
+    show_gifter_info = fields.Boolean(string="Show Gifter Information", default=True, 
+                                    help="Display who is offering the gift card")
+    show_recipient_info = fields.Boolean(string="Show Recipient Information", default=True,
+                                        help="Display who receives the gift card")
+    show_occasion = fields.Boolean(string="Show Occasion", default=True,
+                                help="Display the occasion for the gift")
+    show_valid_for_persons = fields.Boolean(string="Show Valid for X Persons", default=False,
+                                            help="Display how many persons can use the card")
+    
+    show_validity_info = fields.Boolean(string="Show Validity date", default=False,
+                                            help="Display a validity date")
+
+    default_valid_for_persons = fields.Integer(string="Default Valid for Persons", default=1)
+
+    physic_card = fields.Boolean(string="Physical gift card", default=False)
+    physical_gift_card_product_id = fields.Many2one('product.product', 
+                                                    string="Physical Gift Card Product",
+                                                    help="Product used for physical gift cards")

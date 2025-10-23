@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-30 12:48+0000\n"
-"PO-Revision-Date: 2024-09-30 14:51+0200\n"
+"POT-Creation-Date: 2025-06-04 11:07+0000\n"
+"PO-Revision-Date: 2025-06-04 13:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,21 +15,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. module: loyalty_card_design
-#: model_terms:ir.ui.view,arch_db:loyalty_card_design.report_loyalty_gift_card_document
-msgid "1000"
-msgstr "1000"
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__logo_position
+msgid "0 to 100. Corresponds to the top property in css"
+msgstr "0 à 100. Correspond à la propriété \"Top\" en css."
 
 #. module: loyalty_card_design
 #: model_terms:ir.ui.view,arch_db:loyalty_card_design.report_loyalty_gift_card_document
 msgid ""
-"<b class=\"warning_barcode\" style=\"text-align:center; margin-top: "
-"4px\">This code is not a ticket</b>"
+"<b class=\"warning_barcode\" style=\"font-size: 10px;\">This code is not a "
+"ticket</b>"
 msgstr ""
-"<b class=\"warning_barcode\" style=\"text-align:center; margin-top: "
-"4px\">Ce code n'est pas un billet</b>"
+"<b class=\"warning_barcode\" style=\"font-size: 10px;\">Ce code n'est pas "
+"un billet</b>"
 
 #. module: loyalty_card_design
 #: model_terms:ir.ui.view,arch_db:loyalty_card_design.report_loyalty_gift_card_document
@@ -37,21 +37,30 @@ msgid "Amount"
 msgstr "Montant"
 
 #. module: loyalty_card_design
-#: model_terms:ir.ui.view,arch_db:loyalty_card_design.report_loyalty_gift_card_document
-msgid "Barcode"
-msgstr "Code barre"
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__balance_background_color
+msgid "Balance Background Color"
+msgstr "Couleur de fond du montant"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__balance_text_color
+msgid "Balance Text Color"
+msgstr "Couleur du texte du montant"
+
+#. module: loyalty_card_design
+#: model_terms:ir.ui.view,arch_db:loyalty_card_design.loyalty_program_view_form_custom
+msgid "Balance colors"
+msgstr "Couleurs du montant"
 
 #. module: loyalty_card_design
 #: model_terms:ir.ui.view,arch_db:loyalty_card_design.report_loyalty_gift_card_document
-msgid "Code to be used when ordering online or at the counter before"
+msgid "Code to be used when ordering online or at the counter"
 msgstr ""
-"Code à utiliser lors de la commande "
-"avant le"
+"Code à utiliser lors de la commande en ligne ou en point de vente avant le"
 
 #. module: loyalty_card_design
 #: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__condition
 msgid "Condition"
-msgstr "Condition"
+msgstr ""
 
 #. module: loyalty_card_design
 #: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__condition
@@ -59,25 +68,70 @@ msgid "Condition of the gift card"
 msgstr "Conditions d'utilisation"
 
 #. module: loyalty_card_design
+#: model_terms:ir.ui.view,arch_db:loyalty_card_design.loyalty_card_view_tree_custom
+msgid "Custom message"
+msgstr "Message personnalisé"
+
+#. module: loyalty_card_design
 #: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__validity_date
 #: model:ir.model.fields.selection,name:loyalty_card_design.selection__loyalty_program__validity_select__date
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 #. module: loyalty_card_design
-#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__title
-msgid "Default title for the gift card"
-msgstr "Titre par défaut de la carte cadeau"
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__default_valid_for_persons
+msgid "Default Valid for Persons"
+msgstr "Valeur par défaut (Valide pour x personnes)"
+
+#. module: loyalty_card_design
+#: model_terms:ir.ui.view,arch_db:loyalty_card_design.loyalty_program_view_form_custom
+msgid "Delivery Options"
+msgstr "Options de livraison"
 
 #. module: loyalty_card_design
 #: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__description
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
 #. module: loyalty_card_design
 #: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__description
 msgid "Description of the gift card"
 msgstr "Description de la carte"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__balance
+msgid "Display Balance on Gift Card"
+msgstr "Afficher le montant de la carte"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__show_validity_info
+msgid "Display a validity date"
+msgstr "Afficher la date de validité/période"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__show_valid_for_persons
+msgid "Display how many persons can use the card"
+msgstr "Afficher le nombre de personnes qui peuvent utiliser cette carte"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__balance
+msgid "Display the balance on the gift card"
+msgstr "Afficher le montant sur la carte cadeau"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__show_occasion
+msgid "Display the occasion for the gift"
+msgstr "Afficher un message personnalisé"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__show_gifter_info
+msgid "Display who is offering the gift card"
+msgstr "Afficher \"De la part de :\""
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__show_recipient_info
+msgid "Display who receives the gift card"
+msgstr "Afficher \"Pour :\""
 
 #. module: loyalty_card_design
 #: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__validity_duration
@@ -86,14 +140,29 @@ msgid "Duration"
 msgstr "Durée"
 
 #. module: loyalty_card_design
+#: model_terms:ir.ui.view,arch_db:loyalty_card_design.loyalty_program_view_form_custom
+msgid "Gift Card Condition"
+msgstr "Conditions de la carte cadeau"
+
+#. module: loyalty_card_design
 #: model:ir.actions.report,name:loyalty_card_design.gift_card_custom_report
 msgid "Gift Card Custom Report"
 msgstr "Rapport personnalisé de Carte Cadeau"
 
 #. module: loyalty_card_design
 #: model_terms:ir.ui.view,arch_db:loyalty_card_design.loyalty_program_view_form_custom
+msgid "Gift Card Customisation"
+msgstr "Personnalisation de la carte cadeau"
+
+#. module: loyalty_card_design
+#: model_terms:ir.ui.view,arch_db:loyalty_card_design.loyalty_program_view_form_custom
 msgid "Gift Card Customization"
 msgstr "Personnalisation de la carte cadeau"
+
+#. module: loyalty_card_design
+#: model_terms:ir.ui.view,arch_db:loyalty_card_design.loyalty_program_view_form_custom
+msgid "Gift Card Description"
+msgstr "Description de la carte cadeau"
 
 #. module: loyalty_card_design
 #: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__gift_card_description_image
@@ -106,9 +175,139 @@ msgid "Gift Card Header"
 msgstr "Image d'en tête"
 
 #. module: loyalty_card_design
+#: model_terms:ir.ui.view,arch_db:loyalty_card_design.loyalty_program_view_form_custom
+msgid "Gift Card Information Settings"
+msgstr "Paramètres Afficher/Masquer"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_card__gifter_name
+msgid "Gifter Name"
+msgstr "De la part de"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__logo_height
+msgid "Height of the logo in px"
+msgstr "Hauteur du logo en pixel"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__logo
+msgid "Logo"
+msgstr ""
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__logo_height
+msgid "Logo Height"
+msgstr "Hauteur du Logo"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__logo_position
+msgid "Logo Position"
+msgstr "Position du Logo"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__logo_width
+msgid "Logo Width"
+msgstr "Largeur du Logo"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__logo
+msgid "Logo of the gift card"
+msgstr "Logo de la carte cadeau"
+
+#. module: loyalty_card_design
+#: model:ir.model,name:loyalty_card_design.model_loyalty_card
+msgid "Loyalty Coupon"
+msgstr "Bon de fidélité"
+
+#. module: loyalty_card_design
 #: model:ir.model,name:loyalty_card_design.model_loyalty_program
 msgid "Loyalty program Card Template"
 msgstr "Programme de fidelité"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_card__recipient_name
+msgid "Name of the gift recipient"
+msgstr "Nom du bénéficiaire"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_card__gifter_name
+msgid "Name of the person offering the gift"
+msgstr "Nom de la personne qui offre la carte"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_card__valid_for_persons
+msgid "Number of persons who can use this card"
+msgstr "Nombre de personnes qui peuvent utiliser cette carte"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_card__occasion
+msgid "Occasion"
+msgstr "Message personnalisé"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_card__occasion
+msgid "Occasion for the gift (Christmas, Birthday, etc.)"
+msgstr "Message personnalisé ( Joyeux Anniversaire, Joyeux Noël, etc.)"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__physical_gift_card_product_id
+msgid "Physical Gift Card Product"
+msgstr "Produit physique lié"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__physic_card
+msgid "Physical gift card"
+msgstr "Carte cadeau physique"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__primary_background_color
+msgid "Primary Background Color"
+msgstr "Couleur de fond principale"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__physical_gift_card_product_id
+msgid "Product used for physical gift cards"
+msgstr "Produit à utiliser pour les cartes cadeaux physiques"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_card__recipient_name
+msgid "Recipient Name"
+msgstr "Pour"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__secondary_background_color
+msgid "Secondary Background Color"
+msgstr "Couleur de fond secondaire"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__show_gifter_info
+msgid "Show Gifter Information"
+msgstr "Afficher \"De la part de :\""
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__show_occasion
+msgid "Show Occasion"
+msgstr "Afficher un message personnalisé"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__show_recipient_info
+msgid "Show Recipient Information"
+msgstr "Afficher \"Pour :\""
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__show_valid_for_persons
+msgid "Show Valid for X Persons"
+msgstr "Afficher \"Valable pour X personnes\""
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__show_validity_info
+msgid "Show Validity date"
+msgstr "Afficher la date/période de validité"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__text_color
+msgid "Text Color"
+msgstr "Couleur du texte"
 
 #. module: loyalty_card_design
 #: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__title
@@ -121,6 +320,27 @@ msgid "Title Text Color"
 msgstr "Couleur du titre"
 
 #. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__title
+msgid ""
+"Title of the gift card, if not set, the name of the product will be used"
+msgstr "Titre par défaut de la carte cadeau"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_card__valid_for_persons
+msgid "Valid for Persons"
+msgstr "Valide pour x personnes"
+
+#. module: loyalty_card_design
 #: model:ir.model.fields,field_description:loyalty_card_design.field_loyalty_program__validity_select
 msgid "Validity"
 msgstr "Validité"
+
+#. module: loyalty_card_design
+#: model:ir.model.fields,help:loyalty_card_design.field_loyalty_program__logo_width
+msgid "Width of the logo in px"
+msgstr "Largeur du logo en pixel"
+
+#. module: loyalty_card_design
+#: model_terms:ir.ui.view,arch_db:loyalty_card_design.report_loyalty_gift_card_document
+msgid "before"
+msgstr "avant"

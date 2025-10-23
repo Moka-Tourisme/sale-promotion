@@ -1,0 +1,33 @@
+.gift-card-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    margin-bottom: 20px;
+}
+
+.gift-card-form h5 {
+    color: #495057;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.gift-card-form .form-group {
+    margin-bottom: 15px;
+}
+
+.gift-card-form label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.gift-card-form .form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+.gift-card-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}

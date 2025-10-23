@@ -1,0 +1,14 @@
+<odoo>
+    <record id="ir_cron_update_gift_cards" model="ir.cron">
+        <field name="name">Update Gift Cards Custom Fields</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">
+            pass
+        </field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">1</field>
+        <field name="active">False</field>
+    </record>
+</odoo>

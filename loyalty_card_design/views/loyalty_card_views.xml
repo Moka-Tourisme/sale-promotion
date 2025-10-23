@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="loyalty_card_view_form_custom" model="ir.ui.view">
+        <field name="name">loyalty.card.view.form.custom</field>
+        <field name="model">loyalty.card</field>
+        <field name="inherit_id" ref="loyalty.loyalty_card_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="gifter_name"/>
+                <field name="recipient_name"/>
+                <field name="occasion"/>
+                <field name="valid_for_persons"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="loyalty_card_view_tree_custom" model="ir.ui.view">
+        <field name="name">loyalty.card.view.tree.custom</field>
+        <field name="model">loyalty.card</field>
+        <field name="inherit_id" ref="loyalty.loyalty_card_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="gifter_name" optional="hide"/>
+                <field name="recipient_name" optional="hide"/>
+                <field name="occasion" string="Custom message" optional="hide"/>
+                <field name="valid_for_persons" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
