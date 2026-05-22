@@ -39,7 +39,7 @@
     min-width: 100%;
     max-height: 5.5em;
     min-height: 5.5em;
-    padding: 5%;
+    padding: 2%;
 }
 
 .customized_title {
@@ -70,10 +70,11 @@
 }
 
 .div_description_card {
+    margin-top: -2%;
     min-width: 100%;
     max-height: 16.5em;
     min-height: 16.5em;
-    padding: 5%;
+    padding: 2%;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -82,8 +83,6 @@
     font-size: 13px;
     line-height: initial;
 }
-
-
 
 .div_code_card {
     background-color: #f5efd6;
