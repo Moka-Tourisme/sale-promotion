@@ -13,7 +13,7 @@
     "depends": ["pos_sale_loyalty"],
     "data": [
         'views/pos_order_views.xml',
-        # "views/loyalty_card_views.xml",
+        "views/loyalty_card_views.xml",
     ],
     "auto-install": False,
 }
