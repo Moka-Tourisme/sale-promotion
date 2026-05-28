@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Vue d'arbre pour afficher les loyalty cards liées à une commande -->
-    <record id="action_loyalty_cards_from_sale_order" model="ir.actions.act_window">
+    <!-- <record id="action_loyalty_cards_from_sale_order" model="ir.actions.act_window">
         <field name="name">Loyalty Cards</field>
         <field name="res_model">loyalty.card</field>
         <field name="view_mode">tree,form</field>
@@ -10,11 +10,11 @@
         <field name="help" type="html">
             <h1>No Loyalty Cards</h1>
             <p>This sale order does not have any loyalty cards linked to it.</p>
-        </field>
+        </field> -->
     </record>
 
-    <record id="view_loyalty_card_tree_inherit" model="ir.ui.view">
-        <field name="name">loyalty.card.view.tree.inherit</field>
+    <record id="view_pos_loyalty_card_tree_inherit" model="ir.ui.view">
+        <field name="name">loyalty.card.pos.view.tree.inherit</field>
         <field name="model">loyalty.card</field>
         <field name="inherit_id" ref="loyalty.loyalty_card_view_tree" />
         <field name="arch" type="xml">
