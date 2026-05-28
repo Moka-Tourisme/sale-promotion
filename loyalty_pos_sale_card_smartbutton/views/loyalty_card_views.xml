@@ -19,7 +19,7 @@
         <field name="inherit_id" ref="loyalty.loyalty_card_view_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='program_id']" position="after">
-                <field name="order_id"/>
+                <field name="source_pos_order_id"/>
             </xpath>
         </field>
     </record>
