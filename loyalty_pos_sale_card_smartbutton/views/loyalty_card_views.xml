@@ -10,8 +10,8 @@
         <field name="help" type="html">
             <h1>No Loyalty Cards</h1>
             <p>This sale order does not have any loyalty cards linked to it.</p>
-        </field> -->
-    </record>
+        </field> 
+    </record>-->
 
     <record id="view_pos_loyalty_card_tree_inherit" model="ir.ui.view">
         <field name="name">loyalty.card.pos.view.tree.inherit</field>
