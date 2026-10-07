@@ -35,6 +35,7 @@ class LoyaltyCard(models.Model):
                 if accounts and accounts['expired_profit'] and accounts['income']:
                     account_move = self.env['account.move'].search([
                         ('ref', 'like', 'GC/%'),
+                        ('journal_id', '=', accounts['journal'].id),
                         ('state', '=', 'draft'),
                         ('date', '>=', first_date_year),
                         ('date', '<=', last_date_year)

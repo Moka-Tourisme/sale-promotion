@@ -9,8 +9,9 @@ class ProductTemplate(models.Model):
                                              help="Account used to record the expired profit of the gift card.")
     expired_journal = fields.Many2one('account.journal', string='Expired Journal',
                                       help="Journal used to record the expired profit of the gift card.",
-                                      default=lambda self: self.env['account.journal'].search([('code', '=', 'OD')],
-                                                                                              limit=1))
+                                      default=lambda self: self.env['account.journal'].search([
+                                          ('code', '=', 'OD'), ('company_id', '=', self.env.company.id)
+                                      ], limit=1))
 
     def _get_product_accounts(self):
         accounts = super(ProductTemplate, self)._get_product_accounts()
