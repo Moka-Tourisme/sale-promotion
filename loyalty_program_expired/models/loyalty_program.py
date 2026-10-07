@@ -9,15 +9,8 @@ class LoyaltyCard(models.Model):
         gift_card_expired_with_balance = self.env['loyalty.card'].search([
             ('expiration_date', '<=', fields.Date.today()), ('points', '>', 0), ('used_by_cron', '=', False)
         ]).filtered(lambda x: x.program_id.trigger_product_ids and len(x.program_id.trigger_product_ids) == 1)
-        gift_card_to_expire = self.env['loyalty.card'].search([
-            ('expiration_date', '=', fields.Date.today()), ('points', '>', 0),
-            ('used_by_cron', '=', False)
-        ]).filtered(lambda x: x.program_id.trigger_product_ids and len(x.program_id.trigger_product_ids) == 1)
-        print("gift_card_to_expire", gift_card_to_expire)
         if gift_card_expired_with_balance:
             self._create_update_account_move_line(gift_card_expired_with_balance)
-        if gift_card_to_expire:
-            self._create_update_account_move_line(gift_card_to_expire)
 
     def _create_update_account_move_line(self, gift_cards):
         for gift_card in gift_cards:
